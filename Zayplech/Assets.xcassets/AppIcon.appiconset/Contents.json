@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "Zayplech_Logo1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -12,6 +13,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "Zayplech_AppIcon2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -23,6 +25,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "Zayplech_2AppIcon3.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
