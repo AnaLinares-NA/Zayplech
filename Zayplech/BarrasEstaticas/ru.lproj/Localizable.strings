@@ -1,0 +1,69 @@
+/*
+  Localizable.strings
+  Zayplech
+
+  Russian (Русский) – Created by Ana Linares Guzmán on 20/10/25.
+*/
+
+// EventoSelectionView
+"evento_titulo" = "Выберите интересующее вас событие";
+"evento_deportes" = "Спорт";
+"evento_conciertos" = "Концерты";
+"evento_desfiles" = "Парады";
+"evento_ferias" = "Ярмарки";
+"evento_congresos" = "Конференции";
+"evento_meet_greet" = "Встреча и приветствие";
+// EventoSelectionView - lista deportes
+"evento_deportes_titulo" = "Спортивные события";
+"evento_deportes_mundial" = "Чемпионат мира 2026";
+
+//ContentView
+"skip_button" = "Пропустить";
+"next_button" = "Далее";
+"start_button" = "Вперёд к Чемпионату мира!";
+
+"onboarding_1_title" = "Безопасность в любое время";
+"onboarding_1_desc" = "Кнопка тревоги, безопасные зоны, официальные оповещения и прямой контакт с властями.";
+
+"onboarding_2_title" = "Надёжная медицинская помощь";
+"onboarding_2_desc" = "Ближайшие больницы, экстренная помощь и международное медицинское покрытие.";
+
+"onboarding_3_title" = "Языковых барьеров больше нет";
+"onboarding_3_desc" = "Мгновенный перевод, полезные фразы и поддержка местных выражений.";
+
+"onboarding_4_title" = "Безопасное и удобное передвижение";
+"onboarding_4_desc" = "Безопасные маршруты, зоны риска, общественный транспорт и туристические места.";
+
+"onboarding_5_title" = "Прозрачная экономика";
+"onboarding_5_desc" = "Актуальные курсы валют, предупреждения о мошенничестве и завышенных ценах.";
+
+"onboarding_6_title" = "Твой помощник на Чемпионате мира";
+"onboarding_6_desc" = "Расписание матчей, проверка билетов, утерянные вещи и многое другое.";
+
+//RegistroView
+"registro_titulo" = "Создайте аккаунт";
+"registro_phone" = "Номер телефона";
+"registro_email" = "Электронная почта";
+"registro_email_placeholder" = "Электронная почта";
+"registro_phone_placeholder" = "Номер телефона";
+"registro_first_name" = "Имя";
+"registro_last_name" = "Фамилия";
+"registro_password" = "Пароль";
+"registro_next" = "Продолжить";
+"registro_tienes_cuenta" = "Уже есть аккаунт?";
+"registro_ir_login" = "Войти";
+"registro_social" = "Или войдите через";
+"registro_pass_min" = "мин. 8 символов";
+"registro_pass_upper" = "1 заглавная";
+"registro_pass_num" = "1 цифра";
+"registro_confirmar_password" = "Подтвердите пароль";
+"registro_error_confirmacion" = "Ошибка: пароли не совпадают";
+
+//LoginView
+"login_titulo" = "Вход";
+"login_recordar_usuario" = "Запомнить меня";
+"login_olvidaste_contrasena" = "Забыли пароль?";
+"login_boton" = "Войти";
+"login_eres_nuevo" = "Впервые здесь?";
+"login_error" = "Пожалуйста, введите действительный пароль";
+

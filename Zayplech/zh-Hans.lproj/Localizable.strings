@@ -6,24 +6,65 @@
   
 */
 
-"skip_button" = "Omitir";
-"next_button" = "Siguiente";
-"start_button" = "¡Vamos al mundial!";
+// EventoSelectionView
+"evento_titulo" = "请选择您感兴趣的活动";
+"evento_deportes" = "体育";
+"evento_conciertos" = "音乐会";
+"evento_desfiles" = "游行";
+"evento_ferias" = "展会";
+"evento_congresos" = "会议";
+"evento_meet_greet" = "见面会";
+// EventoSelectionView - lista deportes
+"evento_deportes_titulo" = "体育活动";
+"evento_deportes_mundial" = "2026年世界杯";
 
-"onboarding_1_title" = "Seguridad en todo momento";
-"onboarding_1_desc" = "Botón de pánico, zonas seguras, alertas oficiales y contacto directo con autoridades.";
+//ContentView
+"skip_button" = "跳过";
+"next_button" = "下一步";
+"start_button" = "开始世界杯！";
 
-"onboarding_2_title" = "Asistencia médica confiable";
-"onboarding_2_desc" = "Hospitales cercanos, atención inmediata y cobertura médica internacional.";
+"onboarding_1_title" = "随时保障安全";
+"onboarding_1_desc" = "紧急按钮、安全区域、官方警报和直接联系当局。";
 
-"onboarding_3_title" = "Idioma sin barreras";
-"onboarding_3_desc" = "Traducción en tiempo real, frases útiles y compatibilidad con modismos locales.";
+"onboarding_2_title" = "可靠的医疗援助";
+"onboarding_2_desc" = "附近医院、即时救助和国际医疗保障。";
 
-"onboarding_4_title" = "Movilidad segura y eficiente";
-"onboarding_4_desc" = "Rutas seguras, zonas de riesgo, transporte público y puntos turísticos.";
+"onboarding_3_title" = "无障碍语言";
+"onboarding_3_desc" = "实时翻译、实用短语及本地用语兼容。";
 
-"onboarding_5_title" = "Economía transparente";
-"onboarding_5_desc" = "Tipos de cambio en tiempo real, alertas de estafas y precios inflados.";
+"onboarding_4_title" = "安全高效的出行";
+"onboarding_4_desc" = "安全路线、风险区域、公共交通和旅游景点。";
 
-"onboarding_6_title" = "Tu asistente del Mundial";
-"onboarding_6_desc" = "Horarios de partidos, verificación de boletos, pertenencias perdidas y más.";
+"onboarding_5_title" = "透明的经济";
+"onboarding_5_desc" = "实时汇率、诈骗警报和价格欺诈。";
+
+"onboarding_6_title" = "您的世界杯助手";
+"onboarding_6_desc" = "比赛时间表、票务核查、失物招领等。";
+
+//RegistroView
+"registro_titulo" = "创建账户";
+"registro_phone" = "电话号码";
+"registro_email" = "电子邮箱";
+"registro_email_placeholder" = "电子邮箱";
+"registro_phone_placeholder" = "电话号码";
+"registro_first_name" = "名字";
+"registro_last_name" = "姓氏";
+"registro_password" = "密码";
+"registro_next" = "继续";
+"registro_tienes_cuenta" = "已有账户？";
+"registro_ir_login" = "登录";
+"registro_social" = "或使用以下方式登录";
+"registro_pass_min" = "至少8个字符";
+"registro_pass_upper" = "1个大写字母";
+"registro_pass_num" = "1个数字";
+"registro_confirmar_password" = "确认密码";
+"registro_error_confirmacion" = "错误：密码不匹配";
+
+//LoginView
+"login_titulo" = "登录";
+"login_recordar_usuario" = "记住我";
+"login_olvidaste_contrasena" = "忘记密码？";
+"login_boton" = "登录";
+"login_eres_nuevo" = "新用户？";
+"login_error" = "请输入有效的密码";
+

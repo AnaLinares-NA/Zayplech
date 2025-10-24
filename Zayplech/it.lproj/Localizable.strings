@@ -6,24 +6,63 @@
   
 */
 
-"skip_button" = "Omitir";
-"next_button" = "Siguiente";
-"start_button" = "¡Vamos al mundial!";
+// EventoSelectionView
+"evento_titulo" = "Seleziona l'evento di tuo interesse";
+"evento_deportes" = "Sport";
+"evento_conciertos" = "Concerti";
+"evento_desfiles" = "Sfilate";
+"evento_ferias" = "Fiere";
+"evento_congresos" = "Congressi";
+"evento_meet_greet" = "Meet & Greet";
+// EventoSelectionView - lista deportes
+"evento_deportes_titulo" = "Eventi sportivi";
+"evento_deportes_mundial" = "Mondiale 2026";
 
-"onboarding_1_title" = "Seguridad en todo momento";
-"onboarding_1_desc" = "Botón de pánico, zonas seguras, alertas oficiales y contacto directo con autoridades.";
+"skip_button" = "Salta";
+"next_button" = "Avanti";
+"start_button" = "Andiamo al Mondiale!";
 
-"onboarding_2_title" = "Asistencia médica confiable";
-"onboarding_2_desc" = "Hospitales cercanos, atención inmediata y cobertura médica internacional.";
+"onboarding_1_title" = "Sicurezza in ogni momento";
+"onboarding_1_desc" = "Pulsante di panico, zone sicure, avvisi ufficiali e contatto diretto con le autorità.";
 
-"onboarding_3_title" = "Idioma sin barreras";
-"onboarding_3_desc" = "Traducción en tiempo real, frases útiles y compatibilidad con modismos locales.";
+"onboarding_2_title" = "Assistenza medica affidabile";
+"onboarding_2_desc" = "Ospedali vicini, assistenza immediata e copertura medica internazionale.";
 
-"onboarding_4_title" = "Movilidad segura y eficiente";
-"onboarding_4_desc" = "Rutas seguras, zonas de riesgo, transporte público y puntos turísticos.";
+"onboarding_3_title" = "Lingua senza barriere";
+"onboarding_3_desc" = "Traduzione in tempo reale, frasi utili e compatibilità con modi di dire locali.";
 
-"onboarding_5_title" = "Economía transparente";
-"onboarding_5_desc" = "Tipos de cambio en tiempo real, alertas de estafas y precios inflados.";
+"onboarding_4_title" = "Mobilità sicura ed efficiente";
+"onboarding_4_desc" = "Percorsi sicuri, zone a rischio, trasporto pubblico e punti turistici.";
 
-"onboarding_6_title" = "Tu asistente del Mundial";
-"onboarding_6_desc" = "Horarios de partidos, verificación de boletos, pertenencias perdidas y más.";
+"onboarding_5_title" = "Economia trasparente";
+"onboarding_5_desc" = "Tassi di cambio in tempo reale, avvisi di truffe e prezzi gonfiati.";
+
+"onboarding_6_title" = "Il tuo assistente del Mondiale";
+"onboarding_6_desc" = "Orari delle partite, verifica dei biglietti, oggetti smarriti e altro.";
+
+//RegistroView
+"registro_titulo" = "Crea il tuo account";
+"registro_phone" = "Numero di telefono";
+"registro_email" = "Indirizzo email";
+"registro_email_placeholder" = "Indirizzo email";
+"registro_phone_placeholder" = "Numero di telefono";
+"registro_first_name" = "Nome";
+"registro_last_name" = "Cognome";
+"registro_password" = "Password";
+"registro_next" = "Continua";
+"registro_tienes_cuenta" = "Hai già un account?";
+"registro_ir_login" = "Accedi";
+"registro_social" = "Oppure accedi con";
+"registro_pass_min" = "min. 8 caratteri";
+"registro_pass_upper" = "1 maiuscola";
+"registro_pass_num" = "1 numero";
+"registro_confirmar_password" = "Conferma password";
+"registro_error_confirmacion" = "Errore: le password non coincidono";
+
+//LoginView
+"login_titulo" = "Accedi";
+"login_recordar_usuario" = "Ricordami";
+"login_olvidaste_contrasena" = "Hai dimenticato la password?";
+"login_boton" = "Entra";
+"login_eres_nuevo" = "Sei nuovo?";
+"login_error" = "Inserisci una password valida";

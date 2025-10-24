@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  Zayplech
+
+  Created by Ana Linares Guzmán on 20/10/25.
+  
+*/
+
+// EventoSelectionView
+"evento_titulo" = "Wählen Sie die Veranstaltung, die Sie interessiert";
+"evento_deportes" = "Sport";
+"evento_conciertos" = "Konzerte";
+"evento_desfiles" = "Paraden";
+"evento_ferias" = "Messen";
+"evento_congresos" = "Kongresse";
+"evento_meet_greet" = "Meet & Greet";
+// EventoSelectionView - lista deportes
+"evento_deportes_titulo" = "Sportveranstaltungen";
+"evento_deportes_mundial" = "Weltmeisterschaft 2026";
+
+//ContentView
+"skip_button" = "Überspringen";
+"next_button" = "Weiter";
+"start_button" = "Ab zum WM!";
+
+"onboarding_1_title" = "Sicherheit jederzeit";
+"onboarding_1_desc" = "Panikknopf, sichere Zonen, offizielle Warnungen und direkter Kontakt zu Behörden.";
+
+"onboarding_2_title" = "Zuverlässige medizinische Hilfe";
+"onboarding_2_desc" = "Nahegelegene Krankenhäuser, sofortige Versorgung und internationale Krankenversicherung.";
+
+"onboarding_3_title" = "Sprache ohne Barrieren";
+"onboarding_3_desc" = "Echtzeitübersetzung, nützliche Phrasen und Kompatibilität mit lokalen Redewendungen.";
+
+"onboarding_4_title" = "Sichere und effiziente Mobilität";
+"onboarding_4_desc" = "Sichere Routen, Risikogebiete, öffentliche Verkehrsmittel und Sehenswürdigkeiten.";
+
+"onboarding_5_title" = "Transparente Wirtschaft";
+"onboarding_5_desc" = "Wechselkurse in Echtzeit, Betrugswarnungen und überhöhte Preise.";
+
+"onboarding_6_title" = "Dein WM-Assistent";
+"onboarding_6_desc" = "Spielpläne, Ticketüberprüfung, verlorene Gegenstände und mehr.";
+
+//RegistroView
+"registro_titulo" = "Erstelle dein Konto";
+"registro_phone" = "Telefonnummer";
+"registro_email" = "E-Mail-Adresse";
+"registro_email_placeholder" = "E-Mail-Adresse";
+"registro_phone_placeholder" = "Telefonnummer";
+"registro_first_name" = "Vorname";
+"registro_last_name" = "Nachname";
+"registro_password" = "Passwort";
+"registro_next" = "Weiter";
+"registro_tienes_cuenta" = "Hast du schon ein Konto?";
+"registro_ir_login" = "Anmelden";
+"registro_social" = "Oder melde dich an mit";
+"registro_pass_min" = "mind. 8 Zeichen";
+"registro_pass_upper" = "1 Großbuchstabe";
+"registro_pass_num" = "1 Zahl";
+"registro_confirmar_password" = "Passwort bestätigen";
+"registro_error_confirmacion" = "Fehler: Passwörter stimmen nicht überein";
+
+//LoginView
+"login_titulo" = "Anmelden";
+"login_recordar_usuario" = "Angemeldet bleiben";
+"login_olvidaste_contrasena" = "Passwort vergessen?";
+"login_boton" = "Einloggen";
+"login_eres_nuevo" = "Neu hier?";
+"login_error" = "Bitte ein gültiges Passwort eingeben";
+
