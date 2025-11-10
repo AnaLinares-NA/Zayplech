@@ -45,6 +45,9 @@
 "registro_titulo" = "أنشئ حسابك";
 "registro_phone" = "رقم الهاتف";
 "registro_email" = "البريد الإلكتروني";
+"registro_masculino" = "ذكر";
+"registro_femenino" = "أنثى";
+"registro_pref_no_decir" = "أفضل عدم الإفصاح";
 "registro_email_placeholder" = "البريد الإلكتروني";
 "registro_phone_placeholder" = "رقم الهاتف";
 "registro_first_name" = "الاسم الأول";
@@ -68,3 +71,95 @@
 "login_eres_nuevo" = "جديد هنا؟";
 "login_error" = "يرجى إدخال كلمة مرور صالحة";
 
+// TabBar
+"tab_home" = "الرئيسية";
+"tab_translator" = "المترجم";
+"tab_ai" = "الذكاء الاصطناعي";
+"tab_security" = "الأمان";
+"tab_map" = "الخريطة";
+
+// Header
+"mainmenu_title" = "مرحبًا بك في المونديال!";
+
+// HomeView
+"home_no_te_pierdas_gol" = "لا تفوت أي هدف!";
+"home_clima_emocion" = "لا تدع الطقس يفسد حماسك!";
+"home_estadio" = "هل أنت في الاستاد بالفعل؟";
+"home_necesitas_ayuda" = "هل تحتاج مساعدة؟";
+"home_identificar_seguridad" = "تحديد أقرب أفراد الأمن لك";
+"home_zonas_accesibilidad" = "مناطق الوصول";
+"home_identifica_zonas_discapacidad" = "تحديد مناطق الوصول للأشخاص ذوي الإعاقة";
+"home_perdiste_algo" = "هل فقدت شيئًا؟";
+"home_protocolos_robo_extravio" = "تعرف على بروتوكولات السرقة أو الضياع";
+"home_mas_allá_estadio" = "ما بعد الاستاد";
+"home_alineaciones_jugadores" = "التشكيلات واللاعبون";
+"home_conoce_alineaciones" = "تعرف على التشكيلات واللاعبين الذين سيمنحونك تجربة رياضية مثيرة.";
+"home_cuenta_regresiva" = "العد التنازلي لكأس العالم 2026";
+
+// TimeBox
+"dias" = "أيام";
+"horas" = "ساعات";
+"minutos" = "دقائق";
+"segundos" = "ثواني";
+
+// Widgets / Secciones
+"register_interest_teams_matches" = "سجل الفرق والمباريات التي تهمك";
+"search_stadium_city" = "ابحث عن استاد أو مدينة...";
+"news_and_more" = "أخبار وأكثر";
+"pre_sale_phase_worldcup" = "بدأت المرحلة الأولى من مبيعات كأس العالم!";
+"pre_sale_phase_description" = "في هذه المرحلة، يمكن فقط لحاملي بطاقة Visa المشاركة، ويجب عليهم التسجيل في منصة FIFA ID والدخول في السحب.";
+"qualified_teams_title" = "ما هي الفرق المؤهلة؟";
+"qualified_teams_description" = "ستنظم دول UEFA وCONMEBOL وCONCACAF وAFC وOFC وCAF تصفيات لتحديد من يصل إلى البطولة.";
+
+// Clima
+"weather_partially_cloudy" = "غائم جزئيًا";
+"weather_sunny" = "مشمس";
+"weather_thunderstorms" = "عواصف رعدية";
+"weather_cloudy" = "غائم";
+
+// Seguridad
+"seguridad_title" = "الأمان";
+"seguridad_subtitle" = "الموارد والمساعدة في حالات الطوارئ";
+"boton_panico_title" = "زر الطوارئ";
+"numeros_emergencia_title" = "أرقام الطوارئ";
+"emergencia_911" = "911";
+"emergencia_text" = "حالات الطوارئ";
+"pais_mexico" = "المكسيك";
+"denuncia_anonima" = "تبليغ مجهول";
+"auxilio_vial" = "المساعدة على الطرق";
+"cfe" = "CFE";
+"linea_apoyo_mujeres" = "خط الدعم للنساء";
+"pais_eeuu" = "الولايات المتحدة";
+"policia_no_urgente" = "الشرطة (غير عاجل)";
+"alto_trata" = "أوقف الاتجار بالبشر";
+"reporte_atf" = "تقرير ATF (أسلحة)";
+"pais_canada" = "كندا";
+"ayuda_comunitaria" = "المساعدة المجتمعية";
+"reporte_fraudes" = "الإبلاغ عن الاحتيال";
+"manuales_title" = "الكتيبات والإرشادات";
+"manuales_mujeres" = "كتيبات للنساء";
+"protocolos_via_publica" = "بروتوكولات الأماكن العامة";
+"guias_turisticas" = "أدلة سياحية";
+"protocolo_desastres" = "بروتوكول الكوارث";
+"novedades_title" = "الأخبار";
+"noticias_mexico" = "أخبار المكسيك";
+"noticias_eeuu" = "أخبار الولايات المتحدة";
+"noticias_canada" = "أخبار كندا";
+
+// TraduccionView
+"traduccion_titulo" = "الترجمة الفورية";
+"traduccion_idioma_origen" = "اللغة الأصلية";
+"traduccion_idioma_destino" = "اللغة المستهدفة";
+"traduccion_texto_reconocido" = "النص المعترف به";
+"traduccion_texto_traducido" = "الترجمة";
+"traduccion_esperando" = "في انتظار إدخال الصوت...";
+"error" = "خطأ";
+"aceptar" = "موافق";
+"permiso_microfono_denegado" = "تم رفض إذن الميكروفون. يرجى تفعيله في الإعدادات.";
+"permiso_voz_denegado" = "تم رفض إذن التعرف على الصوت. يرجى تفعيله في الإعدادات.";
+"error_configurar_audio" = "حدث خطأ عند إعداد جلسة الصوت.";
+"error_inicio_reconocimiento" = "حدث خطأ عند بدء التعرف على الصوت.";
+"error_reconocedor_no_disponible" = "جهاز التعرف على الصوت غير متاح.";
+"error_inicio_audio" = "حدث خطأ عند بدء تسجيل الصوت.";
+"noticia_y_mas" = "أخبار وأكثر";
+"pulsa_ver_mas" = "اضغط للمزيد...";

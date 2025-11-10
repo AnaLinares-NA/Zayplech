@@ -8,147 +8,158 @@
 import SwiftUI
 import Combine
 import MapKit
-
+import CoreLocation
 
 struct HomeView: View {
+    @StateObject private var weatherManager = WeatherManager()
+    @EnvironmentObject var localizationManager: LocalizationManager
+
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 10) {
-                
-                // MARK: - Título principal
-                Text(t("noticia_y_mas"))
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .padding(.horizontal)
-                    .padding(.top, 10)
-
-                NoticiasScrollView()
-
-                CountdownTimerView()
-
-                // MARK: - Boleto y Mapa
-                HStack(spacing: 16) {
-                    TicketCard() // ya con t() aplicado en textos
-                    MapCard()
-                }
-                .padding(.horizontal)
-
-                // MARK: - Clima
-                WeatherWidget()
-
-                RappiWidget()
-                
-                MapAndUberWidgets()
-
-                AdidasWidget()
-            }
-        }
-        .background()
-    }
-}
-
-// MARK: - NewsCard
-struct NewsCard: View {
-    let title: String
-    let teaser: String
-    let fullText: String
-    
-    @State private var showSheet = false
-    
-    var body: some View {
-        Button(action: {
-            showSheet.toggle()
-        }) {
-            HStack {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(title)
-                        .font(.headline)
-                        .foregroundColor(.black)
-                    
-                    Text(teaser)
-                        .font(.subheadline)
-                        .foregroundColor(.black)
-                    
-                    Text(t("pulsa_ver_mas"))
-                        .font(.footnote)
-                        .foregroundColor(.white)
-                }
-                
-                Image(systemName: "figure.soccer")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60, height: 60)
-                    .foregroundColor(.moradoMedio)
-                    .padding(.leading, 10)
-            }
-            .padding()
-            .frame(width: 320, height: 140)
-            .background()
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.azulCielo, lineWidth: 2)
-            )
-            .cornerRadius(16)
-            .shadow(radius: 2)
-            .padding(.vertical)
-        }
-        .sheet(isPresented: $showSheet) {
+        NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text(title)
-                        .font(.title)
-                        .fontWeight(.bold)
+                LazyVStack(alignment: .leading, spacing: 20) {
                     
-                    Text(fullText)
-                        .font(.body)
+                    // MARK: - Encabezado de imagen con contador
+                    ZStack(alignment: .bottom) {
+                        Image("copa")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(height: 180)
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .overlay(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.black.opacity(0.4), .clear]),
+                                    startPoint: .bottom,
+                                    endPoint: .top
+                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                            )
+                        
+                        CountdownOverlayView()
+                            .padding(.bottom, 12)
+                    }
+                    .padding(.horizontal)
+
+                    // MARK: - Sección: No te pierdas ningún gol
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text(t("home_no_te_pierdas_gol"))
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal)
+
+                        HStack(spacing: 16) {
+                            TusInteresesWidget()
+                            MapaBusquedaWidget()
+                        }
+                        .padding(.horizontal)
+                    }
+
+                    // MARK: - Noticias y más
+                    NoticiasCarruselView()
+
+                    // MARK: - Clima Animado
+                    VStack(alignment: .leading) {
+                        Text(t("home_clima_emocion"))
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal)
+                        
+                        WeatherCardAnimado()
+                    }
+
+                    // MARK: - Sección de Accesibilidad
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text(t("home_estadio"))
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 16) {
+                                AccessibilityWidget(
+                                    imageName: "mantente_segura_inicio",
+                                    title: t("home_necesitas_ayuda"),
+                                    description: t("home_identificar_seguridad"),
+                                    color: .rosaChicle,
+                                    destination: MantenteSeguraView()
+                                )
+                                
+                                AccessibilityWidget(
+                                    imageName: "zona_de_accesibilidad",
+                                    title: t("home_zonas_accesibilidad"),
+                                    description: t("home_identifica_zonas_discapacidad"),
+                                    color: .azulCielo,
+                                    destination: ZonaAccesibilidadView()
+                                )
+                                
+                                AccessibilityWidget(
+                                    imageName: "lupa",
+                                    title: t("home_perdiste_algo"),
+                                    description: t("home_protocolos_robo_extravio"),
+                                    color: .rappi,
+                                    destination: ManualesMujeresView()
+                                )
+                            }
+                            .padding(.horizontal)
+                        }
+                    }
+                    
+                    // MARK: - Más allá del estadio
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text(t("home_mas_allá_estadio"))
+                            .font(.caption)
+                            .fontWeight(.bold)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal)
+                        
+                        NavigationLink(destination: TuEquipoView()) {
+                            HStack(spacing: 12) {
+                                Image("alineaciones")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 200, height: 160)
+                                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.gray.opacity(0.2), lineWidth: 0.5)
+                                    )
+                                
+                                VStack(alignment: .leading, spacing: 6) {
+                                    Text(t("home_alineaciones_jugadores"))
+                                        .font(.headline)
+                                        .foregroundColor(.primary)
+                                        .lineLimit(2)
+                                    
+                                    Text(t("home_conoce_alineaciones"))
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                        .lineLimit(4)
+                                }
+                                .frame(height: 160, alignment: .topLeading)
+                            }
+                            .padding(10)
+                            .background(Color(.systemGray6))
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                            .shadow(color: .gray.opacity(0.15), radius: 5, x: 0, y: 3)
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                    }
+                    .padding(.horizontal)
                 }
             }
         }
     }
 }
 
-// MARK: - NoticiasScrollView
-struct NoticiasScrollView: View {
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) {
-                NewsCard(
-                    title: t("noticia_argentina_titulo"),
-                    teaser: t("noticia_argentina_teaser"),
-                    fullText: t("noticia_argentina_fulltext")
-                )
-                
-                NewsCard(
-                    title: t("noticia_francia_titulo"),
-                    teaser: t("noticia_francia_teaser"),
-                    fullText: t("noticia_francia_fulltext")
-                )
-                
-                NewsCard(
-                    title: t("noticia_mexico_titulo"),
-                    teaser: t("noticia_mexico_teaser"),
-                    fullText: t("noticia_mexico_fulltext")
-                )
-                
-                NewsCard(
-                    title: t("noticia_eeuu_titulo"),
-                    teaser: t("noticia_eeuu_teaser"),
-                    fullText: t("noticia_eeuu_fulltext")
-                )
-                
-                NewsCard(
-                    title: t("noticia_alemania_titulo"),
-                    teaser: t("noticia_alemania_teaser"),
-                    fullText: t("noticia_alemania_fulltext")
-                )
-            }
-            .padding(.horizontal)
-        }
-    }
-}
 
-// MARK: - CountdownTimerView
-struct CountdownTimerView: View {
+// MARK: - Componentes reutilizables
+
+struct CountdownOverlayView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    
     let targetDate: Date = {
         var components = DateComponents()
         components.year = 2026
@@ -160,323 +171,248 @@ struct CountdownTimerView: View {
         components.timeZone = TimeZone.current
         return Calendar.current.date(from: components)!
     }()
-    
+
     @State private var now = Date()
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+   
+
     var timeRemaining: DateComponents {
         Calendar.current.dateComponents([.day, .hour, .minute, .second], from: now, to: targetDate)
     }
-    
+
     var body: some View {
-        VStack(alignment: .center, spacing: 10) {
-            Text(t("countdown_title"))
-                .font(.headline)
+        VStack(spacing: 4) {
+            Text(t("home_cuenta_regresiva"))
+                .font(.footnote.bold())
+                .foregroundColor(.white)
             
-            Text(
-                String(
-                    format: t("countdown_text"),
-                    timeRemaining.day ?? 0,
-                    timeRemaining.hour ?? 0,
-                    timeRemaining.minute ?? 0,
-                    timeRemaining.second ?? 0
-                )
-            )
-            .font(.subheadline)
-            .multilineTextAlignment(.center)
+            HStack(spacing: 8) {
+                TimeBox(value: timeRemaining.day ?? 0, label: t("dias"))
+                TimeBox(value: timeRemaining.hour ?? 0, label: t("horas"))
+                TimeBox(value: timeRemaining.minute ?? 0, label: t("minutos"))
+                TimeBox(value: timeRemaining.second ?? 0, label: t("segundos"))
+            }
         }
-        .padding()
-        .background()
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.naranjaMelocoton, lineWidth: 2)
-        )
-        .cornerRadius(16)
-        .frame(maxWidth: .infinity, minHeight: 140)
-        .shadow(radius: 2)
-        .padding(.horizontal)
-        .onReceive(timer) { input in
-            now = input
-        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 12)
+        .background(Color.black.opacity(0.5))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .onReceive(timer) { now = $0 }
     }
 }
 
-// MARK: - TicketCard
-struct TicketCard: View {
-    @State private var showDetails = false
-
+struct TimeBox: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    
+    let value: Int
+    let label: String
     var body: some View {
-        Button {
-            showDetails.toggle()
-        } label: {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(t("ticket_title"))
-                    .font(.headline)
-                    .foregroundColor(.black)
-                Text(t("ticket_subtitle"))
-                    .font(.subheadline)
-                    .foregroundColor(.black)
-                Text(t("ticket_teaser"))
-                    .font(.footnote)
-                    .foregroundColor(.black)
-                Spacer()
-            }
-            .padding()
-            .frame(width: 170, height: 170)
-            .background()
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.lilaSuave, lineWidth: 2)
-            )
-            .cornerRadius(16)
-            .shadow(radius: 2)
+        VStack(spacing: 2) {
+            Text("\(value)")
+                .font(.headline.bold())
+                .foregroundColor(.white)
+            Text(label)
+                .font(.caption2)
+                .foregroundColor(.white.opacity(0.8))
         }
-        .sheet(isPresented: $showDetails) {
-            VStack(alignment: .leading, spacing: 12) {
-                Text(t("ticket_details_title"))
-                    .font(.title2)
-                    .fontWeight(.bold)
-                
-                Text(t("ticket_details_line1"))
-                    .font(.body)
-                
-                Text(t("ticket_details_line2"))
-                Text(t("ticket_details_line3"))
-                Text(t("ticket_details_line4"))
-                Text(t("ticket_details_line5"))
-                Text(t("ticket_details_line6"))
-                
-                Text(t("ticket_details_line7"))
-                    .font(.body)
-                    .padding(.top)
-                
-                Spacer()
-            }
-            .padding()
-        }
+        .frame(minWidth: 45)
     }
 }
 
-// MARK: - MapCard
-struct MapCard: View {
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 19.4333, longitude: -99.1333), // CDMX
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
+// MARK: - Widget: TusInteresesWidget
+struct TusInteresesWidget: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     
     var body: some View {
-        NavigationLink(destination: MapView()) {
-            VStack(alignment: .leading, spacing: 8) {
-                Text(t("mapa_titulo"))
-                    .font(.headline)
-                Text(t("mapa_subtitulo"))
-                    .font(.subheadline)
+        NavigationLink(destination: TusInteresesView()) {
+            ZStack(alignment: .topLeading) {
+                Image("seleccionPaises")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 160)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                    .overlay(
+                        LinearGradient(
+                            gradient: Gradient(colors: [.black.opacity(0.5), .clear]),
+                            startPoint: .top,
+                            endPoint: .center
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                    )
 
-                Map(coordinateRegion: $region)
-                    .frame(height: 100)
-                    .cornerRadius(12)
-                    .shadow(radius: 2)
-                    .padding(.top, 4)
+                Text(t("register_interest_teams_matches"))
+                    .font(.subheadline.bold())
+                    .foregroundColor(.white)
+                    .padding(10)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding()
-            .frame(width: 170, height: 170)
-            .background()
-            .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(Color.lilaSuave, lineWidth: 2)
-            )
-            .cornerRadius(16)
-            .shadow(radius: 2)
+            .frame(height: 160)
+            .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 3)
+        }
+    }
+}
+
+// MARK: - Widget: MapaBusquedaWidget
+struct MapaBusquedaWidget: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    
+    var body: some View {
+        ZStack(alignment: .bottom) {
+            Map(coordinateRegion: .constant(
+                MKCoordinateRegion(
+                    center: CLLocationCoordinate2D(latitude: 19.4333, longitude: -99.1333),
+                    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                )
+            ))
+            .frame(height: 160)
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .allowsHitTesting(false)
+
+            NavigationLink(destination: MapView()) {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color(.systemGray6))
+                    .overlay(
+                        HStack {
+                            Text(t("search_stadium_city"))
+                                .foregroundColor(.gray)
+                                .font(.caption)
+                                .padding(.leading, 8)
+                            Spacer()
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.blue)
+                                .font(.caption)
+                                .padding(.trailing, 6)
+                        }
+                    )
+                    .frame(height: 30)
+                    .padding([.leading, .trailing, .bottom], 8)
+            }
+        }
+        .frame(height: 160)
+        .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 3)
+    }
+}
+
+// MARK: - NoticiasCarruselView
+struct NoticiasCarruselView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(t("news_and_more"))
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundColor(.gray)
+                .padding(.horizontal)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    NoticiaCard(
+                        imageName: "noticia1",
+                        title: t("pre_sale_phase_worldcup"),
+                        subtitle: t("pre_sale_phase_description"),
+                        url: "https://www.elfinanciero.com.mx/deportes/2025/09/08/quieres-ir-al-mundial-de-2026-esto-debes-saber-sobre-la-preventa-de-boletos-fechas-registros-y-mas/"
+                    )
+                    
+                    NoticiaCard(
+                        imageName: "noticia2",
+                        title: t("qualified_teams_title"),
+                        subtitle: t("qualified_teams_description"),
+                        url: "https://www.fifa.com/es/tournaments/mens/worldcup/canadamexicousa2026/articles/copa-mundial-2026-selecciones-clasificadas"
+                    )
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
+}
+
+
+// MARK: - NoticiaCard
+struct NoticiaCard: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    
+    let imageName: String
+    let title: String
+    let subtitle: String
+    let url: String
+    
+    var body: some View {
+        NavigationLink(destination: URLView(url: url)) {
+            HStack(spacing: 12) {
+                Image(imageName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 140, height: 160)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.gray.opacity(0.2), lineWidth: 0.5)
+                    )
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(title)
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                        .lineLimit(2)
+                    
+                    Text(subtitle)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .lineLimit(3)
+                }
+                .frame(width: 170, height: 160, alignment: .leading)
+            }
+            .padding(10)
+            .background(Color(.systemGray6))
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .shadow(color: .gray.opacity(0.15), radius: 5, x: 0, y: 3)
         }
         .buttonStyle(PlainButtonStyle())
     }
 }
 
-// MARK: - WeatherWidget
-struct WeatherWidget: View {
+// MARK: - Widgets de Accesibilidad
+struct AccessibilityWidget<Destination: View>: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    
+    let imageName: String
+    let title: String
+    let description: String
+    let color: Color
+    let destination: Destination
+    
     var body: some View {
-        VStack(spacing: 16) {
-            // Top section: current weather
-            HStack {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(t("weather_location"))
-                        .font(.headline)
-                    Text(t("weather_main_temp"))
-                        .font(.system(size: 44, weight: .light))
-                }
-
-                Spacer()
-
-                VStack(alignment: .trailing, spacing: 4) {
-                    Image(systemName: "cloud.bolt.rain.fill")
-                        .font(.title)
-                        .foregroundColor(.gray)
-                    Text(t("weather_condition"))
-                        .font(.subheadline)
-                    Text(t("weather_max_min"))
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                }
-            }
-
-            // Forecast section
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) {
-                    ForecastDayView(day: t("weather_forecast_day10"), icon: "cloud.rain.fill", temp: t("weather_temp10"))
-                    ForecastDayView(day: t("weather_forecast_day11"), icon: "cloud.sun.fill", temp: t("weather_temp11"))
-                    ForecastDayView(day: t("weather_forecast_day12"), icon: "cloud.sun.fill", temp: t("weather_temp12"))
-                    ForecastDayView(day: t("weather_forecast_day13"), icon: "sun.max.fill", temp: t("weather_temp13"))
-                    ForecastDayView(day: t("weather_forecast_day14"), icon: "sun.max.fill", temp: t("weather_temp14"))
-                    ForecastDayView(day: t("weather_forecast_day15"), icon: "sun.max.fill", temp: t("weather_temp15"))
-                }
-                .padding(.top, 4)
-            }
-        }
-        .padding()
-        .background()
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.moradoMedio, lineWidth: 2)
-        )
-        .cornerRadius(16)
-        .shadow(radius: 4)
-        .padding(.horizontal)
-    }
-}
-
-// MARK: - ForecastDayView
-struct ForecastDayView: View {
-    let day: String
-    let icon: String
-    let temp: String
-
-    var body: some View {
-        VStack(spacing: 4) {
-            Text(day)
-                .font(.footnote)
-            Image(systemName: icon)
-                .foregroundColor(.orange)
-            Text(temp)
-                .font(.footnote)
-        }
-    }
-}
-
-// MARK: - RappiWidget
-struct RappiWidget: View {
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(t("rappi_titulo"))
-                    .font(.headline)
-                Text(t("rappi_subtitulo"))
-                    .font(.subheadline)
-            }
-            Spacer()
-            Image("logo rappi")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 60, height: 60)
-        }
-        .padding()
-        .background(Color.rappi)
-        .cornerRadius(16)
-        .shadow(radius: 2)
-        .padding(.horizontal)
-    }
-}
-
-// MARK: - MapAndUberWidgets
-struct MapAndUberWidgets: View {
-    @Environment(\.openURL) var openURL
-
-    var body: some View {
-        HStack(spacing: 16) {
-            
-            // MAP Widget
-            NavigationLink(destination: MapView2()) {
-                Map(coordinateRegion: .constant(MKCoordinateRegion(
-                    center: CLLocationCoordinate2D(latitude: 19.3044, longitude: -99.1505),
-                    span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                )))
-                .frame(width: 170, height: 170)
-                .cornerRadius(16)
-                .overlay(
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(t("mapa_titulo"))
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        Text(t("mapa_subtitulo"))
-                            .font(.subheadline)
-                            .foregroundColor(.white.opacity(0.8))
-                    }
-                    .padding()
-                    .background(Color.black.opacity(0.4))
-                    .cornerRadius(12)
-                    .padding(6),
-                    alignment: .topLeading
-                )
-                .shadow(radius: 4)
-            }
-
-            Button {
-                if let url = URL(string: "https://apps.apple.com/app/uber/id368677368") {
-                    openURL(url)
-                }
-            } label: {
-                VStack(alignment: .leading, spacing: 8) {
-                    Spacer()
-                    Text(t("uber_titulo"))
-                        .font(.headline)
+        NavigationLink(destination: destination) {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 10) {
+                    Image(imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 35, height: 35)
+                    
+                    Text(title)
+                        .font(.headline.bold())
                         .foregroundColor(.white)
-                    Text(t("uber_subtitulo"))
-                        .font(.subheadline)
-                        .foregroundColor(.white.opacity(0.9))
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        VStack {
-                            Image("uberLogo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 70, height: 50)
-                        }
-                    }
+                        .lineLimit(2)
                 }
-                .padding()
-                .frame(width: 170, height: 170)
-                .background(Color.black)
-                .cornerRadius(16)
-                .shadow(radius: 4)
+                
+                Text(description)
+                    .font(.subheadline)
+                    .foregroundColor(.white.opacity(0.85))
+                    .lineLimit(3)
             }
+            .padding()
+            .frame(width: 190, height: 160, alignment: .topLeading)
+            .background(color.opacity(0.75)) 
+            .clipShape(RoundedRectangle(cornerRadius: 15))
+            .shadow(color: color.opacity(0.3), radius: 5, x: 0, y: 3)
         }
-        .padding(.horizontal)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
-// MARK: - AdidasWidget
-struct AdidasWidget: View {
-    var body: some View {
-        VStack(spacing: 8) {
-            Text(t("adidas_titulo"))
-                .font(.headline)
-            Text(t("adidas_subtitulo"))
-                .font(.subheadline)
-                .multilineTextAlignment(.center)
-            Image("adidasLogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 50)
-        }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(16)
-        .shadow(radius: 2)
-        .padding(.horizontal)
-        .padding(.bottom, 30)
-    }
-}
-
+// MARK: - Preview
 #Preview {
     HomeView()
         .environmentObject(LocalizationManager.shared)

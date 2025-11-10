@@ -7,6 +7,7 @@
 
 import Foundation
 
-func t(_ key: String) -> String {
-    NSLocalizedString(key, comment: "")
+func t(_ key: String, _ args: CVarArg...) -> String {
+    let format = NSLocalizedString(key, comment: "")
+    return String(format: format, arguments: args)
 }

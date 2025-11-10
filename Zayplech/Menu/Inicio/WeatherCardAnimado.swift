@@ -1,9 +1,18 @@
+//
+//  WeatherCardAnimado.swift
+//  Zayplech
+//
+//  Created by Ana Linares Guzmán on 08/11/25.
+//
+
+
 import SwiftUI
 import CoreLocation
 import Combine
 
 // MARK: - WeatherCard Animado
 struct WeatherCardAnimado: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject private var locationManager = LocationManager()
     @StateObject private var weatherManager = WeatherManager()
     
@@ -85,6 +94,7 @@ struct WeatherCardAnimado: View {
     }
     
     private func gradientForCondition(_ icon: String) -> [Color] {
+        @EnvironmentObject var localizationManager: LocalizationManager
         switch icon {
         case "sun.max.fill":
             return [Color.yellow.opacity(0.8), Color.orange.opacity(0.6)]
@@ -102,6 +112,7 @@ struct WeatherCardAnimado: View {
 
 // MARK: - Vista simple de lluvia animada
 struct RainView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @State private var offsetY: CGFloat = -10
     
     var body: some View {

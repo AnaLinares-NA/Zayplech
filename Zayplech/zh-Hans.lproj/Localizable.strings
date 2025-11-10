@@ -45,6 +45,9 @@
 "registro_titulo" = "创建账户";
 "registro_phone" = "电话号码";
 "registro_email" = "电子邮箱";
+"registro_masculino" = "男性";
+"registro_femenino" = "女性";
+"registro_pref_no_decir" = "不愿透露";
 "registro_email_placeholder" = "电子邮箱";
 "registro_phone_placeholder" = "电话号码";
 "registro_first_name" = "名字";
@@ -68,3 +71,95 @@
 "login_eres_nuevo" = "新用户？";
 "login_error" = "请输入有效的密码";
 
+// TabBar
+"tab_home" = "首页";
+"tab_translator" = "翻译";
+"tab_ai" = "AI";
+"tab_security" = "安全";
+"tab_map" = "地图";
+
+// Header
+"mainmenu_title" = "欢迎来到世界杯！";
+
+// HomeView
+"home_no_te_pierdas_gol" = "不要错过任何进球！";
+"home_clima_emocion" = "别让天气破坏激情！";
+"home_estadio" = "你已经在球场了吗？";
+"home_necesitas_ayuda" = "需要帮助吗？";
+"home_identificar_seguridad" = "识别最近的安保人员";
+"home_zonas_accesibilidad" = "无障碍区域";
+"home_identifica_zonas_discapacidad" = "识别残障人士可访问区域";
+"home_perdiste_algo" = "你丢了东西吗？";
+"home_protocolos_robo_extravio" = "查看失窃或遗失处理流程";
+"home_mas_allá_estadio" = "球场之外";
+"home_alineaciones_jugadores" = "阵容与球员";
+"home_conoce_alineaciones" = "了解哪些阵容和球员将带给你体育激情。";
+"home_cuenta_regresiva" = "2026世界杯倒计时";
+
+// TimeBox
+"dias" = "天";
+"horas" = "小时";
+"minutos" = "分";
+"segundos" = "秒";
+
+// Widgets / Secciones
+"register_interest_teams_matches" = "注册感兴趣的球队和比赛";
+"search_stadium_city" = "搜索球场或城市...";
+"news_and_more" = "新闻及更多";
+"pre_sale_phase_worldcup" = "世界杯第一阶段预售开始！";
+"pre_sale_phase_description" = "此阶段仅限Visa卡持卡人参与，他们需在FIFA ID平台注册并参与抽签。";
+"qualified_teams_title" = "哪些队伍已经晋级？";
+"qualified_teams_description" = "UEFA、CONMEBOL、CONCACAF、AFC、OFC 和 CAF 国家将进行预选赛，确定参赛队伍。";
+
+// Clima
+"weather_partially_cloudy" = "局部多云";
+"weather_sunny" = "晴朗";
+"weather_thunderstorms" = "雷雨";
+"weather_cloudy" = "多云";
+
+// Seguridad
+"seguridad_title" = "安全";
+"seguridad_subtitle" = "紧急情况资源与协助";
+"boton_panico_title" = "紧急按钮";
+"numeros_emergencia_title" = "紧急电话";
+"emergencia_911" = "911";
+"emergencia_text" = "紧急";
+"pais_mexico" = "墨西哥";
+"denuncia_anonima" = "匿名举报";
+"auxilio_vial" = "道路救援";
+"cfe" = "CFE";
+"linea_apoyo_mujeres" = "女性援助热线";
+"pais_eeuu" = "美国";
+"policia_no_urgente" = "非紧急警察";
+"alto_trata" = "制止人口贩卖";
+"reporte_atf" = "ATF报告（武器）";
+"pais_canada" = "加拿大";
+"ayuda_comunitaria" = "社区援助";
+"reporte_fraudes" = "欺诈报告";
+"manuales_title" = "手册与指南";
+"manuales_mujeres" = "女性手册";
+"protocolos_via_publica" = "公共场所操作规程";
+"guias_turisticas" = "旅游指南";
+"protocolo_desastres" = "灾害应急方案";
+"novedades_title" = "新闻";
+"noticias_mexico" = "墨西哥新闻";
+"noticias_eeuu" = "美国新闻";
+"noticias_canada" = "加拿大新闻";
+
+// TraduccionView
+"traduccion_titulo" = "实时翻译";
+"traduccion_idioma_origen" = "源语言";
+"traduccion_idioma_destino" = "目标语言";
+"traduccion_texto_reconocido" = "识别文本";
+"traduccion_texto_traducido" = "翻译结果";
+"traduccion_esperando" = "等待语音输入...";
+"error" = "错误";
+"aceptar" = "确定";
+"permiso_microfono_denegado" = "麦克风权限被拒绝，请在设置中启用。";
+"permiso_voz_denegado" = "语音识别权限被拒绝，请在设置中启用。";
+"error_configurar_audio" = "音频配置错误。";
+"error_inicio_reconocimiento" = "语音识别启动错误。";
+"error_reconocedor_no_disponible" = "语音识别不可用。";
+"error_inicio_audio" = "音频录制启动错误。";
+"noticia_y_mas" = "新闻及更多";
+"pulsa_ver_mas" = "点击查看更多...";

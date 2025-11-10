@@ -1,3 +1,11 @@
+//
+//  LocationManager.swift
+//  Zayplech
+//
+//  Created by Ana Linares Guzmán on 08/11/25.
+//
+
+
 import Foundation
 import CoreLocation
 import Combine

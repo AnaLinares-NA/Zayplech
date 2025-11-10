@@ -9,11 +9,7 @@ import SwiftUI
 
 // MARK: - Enum Tab (con icono y traducción)
 enum Tab: String, CaseIterable {
-    case home
-    case translator
-    case ai
-    case security
-    case map
+    case home, translator, ai, security, map
 
     var icon: String {
         switch self {
@@ -25,8 +21,70 @@ enum Tab: String, CaseIterable {
         }
     }
 
-    var title: String {
-        switch self {
+    // Eliminamos la propiedad title del enum
+}
+
+struct CustomTabBar: View {
+    @Binding var selectedTab: Tab
+    @EnvironmentObject var localizationManager: LocalizationManager
+    @Namespace private var animationNamespace
+    
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(Tab.allCases, id: \.self) { tab in
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+                        selectedTab = tab
+                    }
+                }) {
+                    VStack(spacing: 6) {
+                        ZStack {
+                            if selectedTab == tab {
+                                Circle()
+                                    .fill(Color.rosaFucsiaOscuro)
+                                    .matchedGeometryEffect(id: "tab_circle", in: animationNamespace)
+                                    .frame(width: 50, height: 50)
+                                    .shadow(color: .rosaFucsiaOscuro.opacity(0.3), radius: 10, x: 0, y: 5)
+                            }
+                            Image(systemName: tab.icon)
+                                .font(.system(size: 22))
+                                .foregroundColor(selectedTab == tab ? .white : .rosaClaroFloral)
+                        }
+                        // Aquí usamos t() directamente, que ahora observa el environment
+                        Text(tabTitle(for: tab))
+                            .font(.caption2)
+                            .foregroundColor(selectedTab == tab ? .rosaFucsiaOscuro : .rosaClaroFloral)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, 10)
+        .padding(.bottom, 10)
+        .background(
+            ZStack {
+                
+                BlurView(style: .systemUltraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                
+                LinearGradient(
+                    colors: [Color.rosaChicle.opacity(0.9), Color.rosaMagenta.opacity(0.9)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+            }
+            .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 5)
+        )
+        .padding(.horizontal)
+        .animation(.spring(response: 0.4, dampingFraction: 0.6), value: selectedTab)
+    }
+    private func tabTitle(for tab: Tab) -> String {
+        switch tab {
         case .home: return t("tab_home")
         case .translator: return t("tab_translator")
         case .ai: return t("tab_ai")
@@ -36,54 +94,23 @@ enum Tab: String, CaseIterable {
     }
 }
 
+// MARK: - BlurView para fondo semi-transparente consistente
+struct BlurView: UIViewRepresentable {
+    let style: UIBlurEffect.Style
 
-struct CustomTabBar: View {
-    @Binding var selectedTab: Tab
-
-    var body: some View {
-        HStack {
-            ForEach(Tab.allCases, id: \.self) { tab in
-                Spacer()
-                Button(action: {
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
-                        selectedTab = tab
-                    }
-                }) {
-                    VStack {
-                        if selectedTab == tab {
-                            Circle()
-                                .fill(Color.naranjaMelocoton.opacity(0.2))
-                                .frame(width: 50, height: 50)
-                                .overlay(
-                                    Image(systemName: tab.icon)
-                                        .font(.system(size: 22))
-                                        .foregroundColor(.naranjaMelocoton)
-                                )
-                        } else {
-                            Image(systemName: tab.icon)
-                                .font(.system(size: 22))
-                                .foregroundColor(.gray)
-                        }
-
-                        Text(tab.title)
-                            .font(.caption2)
-                            .foregroundColor(selectedTab == tab ? .naranjaMelocoton : .gray)
-                    }
-                }
-                Spacer()
-            }
-        }
-        .frame(height: 70)
-        .clipShape(RoundedRectangle(cornerRadius: 25))
-        .padding(.horizontal, 10)
-        .padding(.bottom, 5)
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: style))
     }
+
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }
 
-
-#Preview {
-    CustomTabBar(selectedTab: .constant(.home))
-        .background(Color.white)
-        .previewLayout(.sizeThatFits)
-        .environmentObject(LocalizationManager.shared)
+// MARK: - Preview
+struct CustomTabBar_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Spacer()
+            CustomTabBar(selectedTab: .constant(.home))
+        }
+    }
 }

@@ -5,14 +5,6 @@
 //  Created by Ana Linares Guzmán on 08/11/25.
 //
 
-
-//
-//  HospitalsSheetView.swift
-//  Zayplech
-//
-//  Created by Ana Linares Guzmán on 08/11/25.
-//
-
 import SwiftUI
 import MapKit
 
@@ -23,7 +15,7 @@ struct Hospital: Identifiable {
     var isSelected: Bool
 }
 
-struct HospitalsSheetView: View {
+struct HospitalSheetView: View {
     @Binding var hospitals: [Hospital]
 
     var body: some View {
@@ -47,7 +39,6 @@ struct HospitalsSheetView: View {
                         
                         Spacer()
                         
-                        // Botón animado estilo pin
                         Button(action: {
                             withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
                                 hospitals[index].isSelected.toggle()

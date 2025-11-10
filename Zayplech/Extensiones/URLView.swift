@@ -1,8 +1,8 @@
 //
 //  URLView.swift
-//  JuntosMX
+//  Zayplech
 //
-//  Created by Ana Linares Guzmán on 30/07/25.
+//  Created by Ana Linares Guzmán on 20/10/25.
 //
 
 import SwiftUI

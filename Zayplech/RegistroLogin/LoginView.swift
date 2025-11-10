@@ -160,7 +160,6 @@ struct LoginView: View {
                 }
             }
             .padding(.vertical)
-            .background(Color.blanco.ignoresSafeArea())
             
             .navigationDestination(isPresented: $navigateToMainMenu) {
                 MainMenuView()

@@ -13,8 +13,21 @@ struct HeaderView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
 
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            // Barra superior
+        ZStack {
+            
+            ZStack {
+                BlurView(style: .systemUltraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                
+                LinearGradient(
+                    colors: [Color.rosaChicle.opacity(0.9), Color.rosaMagenta.opacity(0.9)],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+            }
+            .shadow(color: .black.opacity(0.15), radius: 10, x: 0, y: 5)
+
             HStack {
                 Button(action: {
                     withAnimation {
@@ -23,14 +36,14 @@ struct HeaderView: View {
                 }) {
                     Image(systemName: "line.horizontal.3")
                         .font(.title2)
-                        .foregroundColor(.naranjaMelocoton)
+                        .foregroundColor(.white)
                 }
                 
                 Spacer()
                 
                 Text(t("mainmenu_title"))
                     .font(.headline)
-                    .foregroundColor(.naranjaMelocoton)
+                    .foregroundColor(.white)
                 
                 Spacer()
                 
@@ -39,43 +52,24 @@ struct HeaderView: View {
                 }) {
                     Image(systemName: "person.crop.circle")
                         .font(.title2)
-                        .foregroundColor(.naranjaMelocoton)
+                        .foregroundColor(.white)
                 }
             }
-            .padding()
-            .background(Color.blanco)
-            .shadow(color: .gray.opacity(0.3), radius: 4, x: 0, y: 2)
-            .zIndex(1)
-
-            // Menú deslizable
-            if showMenu {
-                // Fondo para cerrar el menú tocando fuera
-                Color.black.opacity(0.4)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        withAnimation {
-                            showMenu = false
-                        }
-                    }
-                    .zIndex(2)
-                
-                // Llamada a tu menú personalizado
-                MenuView(showMenu: $showMenu)
-                    .frame(width: 250)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .offset(x: 16, y: 60)
-                    .transition(.move(edge: .leading))
-                    .zIndex(3)
-            }
+            .padding(.horizontal, 16)
         }
+        .frame(height: 60)
+        .padding(.horizontal, 12)
+        .padding(.top, 10)
     }
 }
 
-
-#Preview {
-    HeaderView(goToProfile: .constant(false), showMenu: .constant(false))
+// MARK: - Preview
+struct HeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            HeaderView(goToProfile: .constant(false), showMenu: .constant(false))
+            Spacer()
+        }
         .environmentObject(LocalizationManager.shared)
-        .environment(\.locale, Locale(identifier: "es"))
+    }
 }

@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+// MARK: - Modelo de equipo
+struct Team: Identifiable, Hashable {
+    let id = UUID()
+    let name: String
+    let flag: String
+}
+
+// MARK: - Vista principal de equipos asiáticos
 struct AsiaTeamsView: View {
-    // Estado para manejar los equipos seleccionados
     @State private var selectedTeams: Set<String> = []
 
-    // Equipos asiáticos de ejemplo
     let asiaTeams: [Team] = [
         Team(name: "Japón", flag: "🇯🇵"),
         Team(name: "Irán", flag: "🇮🇷"),
@@ -22,93 +28,114 @@ struct AsiaTeamsView: View {
     ]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(spacing: 16) {
             
-            // Encabezado
-            VStack(alignment: .leading, spacing: 6) {
-                Text("Confederación Asiática")
-                    .font(.title2.bold())
-                    .foregroundColor(.amarilloClaro)
-                
-                Text("Selecciona tus equipos favoritos de Asia que participarán en el Mundial.")
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
-            }
-            .padding(.horizontal)
-            .padding(.top, 10)
-            
-            // Lista de equipos
-            ScrollView {
-                VStack(spacing: 12) {
+            // MARK: - Scroll de equipos
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 14) {
                     ForEach(asiaTeams) { team in
-                        TeamRow(team: team, isSelected: selectedTeams.contains(team.name)) {
-                            if selectedTeams.contains(team.name) {
-                                selectedTeams.remove(team.name)
-                            } else {
-                                selectedTeams.insert(team.name)
-                            }
+                        TeamRow(
+                            flag: team.flag,
+                            name: team.name,
+                            color: .yellow,
+                            isSelected: selectedTeams.contains(team.name)
+                        ) {
+                            toggleSelection(team.name)
                         }
                     }
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 8)
+                .padding()
             }
-            
-            Spacer()
+
+            // MARK: - Botón Guardar
+            Button(action: saveSelection) {
+                Text("Guardar selección")
+                    .font(.headline.bold())
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(selectedTeams.isEmpty ? Color.gray : Color.yellow)
+                    .cornerRadius(12)
+                    .shadow(radius: 2)
+            }
+            .padding(.horizontal)
+            .disabled(selectedTeams.isEmpty)
         }
         .navigationTitle("Equipos Asiáticos")
         .navigationBarTitleDisplayMode(.inline)
+        .background(Color(.systemGroupedBackground))
+        .onAppear(perform: loadSelection)
     }
-}
+    
+    // MARK: - Funciones de selección
+    private func toggleSelection(_ team: String) {
+        withAnimation(.spring()) {
+            if selectedTeams.contains(team) {
+                selectedTeams.remove(team)
+            } else {
+                selectedTeams.insert(team)
+            }
+        }
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+    }
 
-// MARK: - Modelo de equipo
-struct Team: Identifiable {
-    let id = UUID()
-    let name: String
-    let flag: String
+    // MARK: - Guardar selección
+    private func saveSelection() {
+        let array = Array(selectedTeams)
+        UserDefaults.standard.set(array, forKey: "AsiaTeamsSelected")
+        print("Equipos guardados:", array)
+    }
+    
+    // MARK: - Cargar selección previa
+    private func loadSelection() {
+        guard let saved = UserDefaults.standard.array(forKey: "AsiaTeamsSelected") as? [String] else { return }
+        selectedTeams = Set(saved)
+    }
 }
 
 // MARK: - Fila de equipo
 struct TeamRow: View {
-    let team: Team
+    let flag: String
+    let name: String
+    let color: Color
     let isSelected: Bool
-    let action: () -> Void
+    let onTap: () -> Void
 
     var body: some View {
-        HStack {
-            Text(team.flag)
-                .font(.system(size: 32))
-            
-            Text(team.name)
-                .font(.body.bold())
-                .foregroundColor(.primary)
-            
-            Spacer()
-            
-            Button(action: action) {
-                HStack(spacing: 6) {
-                    Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    Text(isSelected ? "Seleccionado" : "Seleccionar")
-                        .font(.caption.bold())
+        Button(action: onTap) {
+            HStack(spacing: 14) {
+                Text(flag)
+                    .font(.system(size: 36))
+                
+                Text(name)
+                    .font(.body.bold())
+                    .foregroundColor(.primary)
+                
+                Spacer()
+                
+                ZStack {
+                    Circle()
+                        .strokeBorder(isSelected ? color : .gray.opacity(0.3), lineWidth: 2)
+                        .frame(width: 28, height: 28)
+                        .background(Circle().fill(isSelected ? color.opacity(0.15) : Color.clear))
+                    
+                    if isSelected {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(color)
+                            .font(.system(size: 26))
+                            .transition(.scale)
+                    }
                 }
-                .padding(.vertical, 6)
-                .padding(.horizontal, 12)
-                .foregroundColor(isSelected ? .blanco : .amarilloClaro)
-                .background(isSelected ? Color.amarilloClaro : Color.clear)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.amarilloClaro, lineWidth: 1)
-                )
-                .clipShape(Capsule())
             }
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(Color.white)
+                    .shadow(color: .gray.opacity(0.08), radius: 4, x: 0, y: 2)
+            )
         }
-        .padding(.horizontal)
-        .padding(.vertical, 8)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color.white)
-                .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
-        )
+        .buttonStyle(.plain)
     }
 }
 
@@ -116,6 +143,6 @@ struct TeamRow: View {
 #Preview {
     NavigationStack {
         AsiaTeamsView()
+            .preferredColorScheme(.light)
     }
-    .previewDevice("iPhone 17 Pro")
 }

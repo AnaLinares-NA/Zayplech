@@ -45,6 +45,9 @@
 "registro_titulo" = "Erstelle dein Konto";
 "registro_phone" = "Telefonnummer";
 "registro_email" = "E-Mail-Adresse";
+"registro_masculino" = "Männlich";
+"registro_femenino" = "Weiblich";
+"registro_pref_no_decir" = "Möchte ich nicht angeben";
 "registro_email_placeholder" = "E-Mail-Adresse";
 "registro_phone_placeholder" = "Telefonnummer";
 "registro_first_name" = "Vorname";
@@ -68,3 +71,95 @@
 "login_eres_nuevo" = "Neu hier?";
 "login_error" = "Bitte ein gültiges Passwort eingeben";
 
+// TabBar
+"tab_home" = "Startseite";
+"tab_translator" = "Übersetzer";
+"tab_ai" = "KI";
+"tab_security" = "Sicherheit";
+"tab_map" = "Karte";
+
+// Header
+"mainmenu_title" = "Willkommen zur Weltmeisterschaft!";
+
+// HomeView
+"home_no_te_pierdas_gol" = "Verpasse kein Tor!";
+"home_clima_emocion" = "Lass das Wetter die Spannung nicht verderben!";
+"home_estadio" = "Bist du schon im Stadion?";
+"home_necesitas_ayuda" = "Brauchst du Hilfe?";
+"home_identificar_seguridad" = "Identifiziere das nächstgelegene Sicherheitspersonal";
+"home_zonas_accesibilidad" = "Barrierefreie Bereiche";
+"home_identifica_zonas_discapacidad" = "Erkenne barrierefreie Bereiche für Menschen mit Behinderungen";
+"home_perdiste_algo" = "Hast du etwas verloren?";
+"home_protocolos_robo_extravio" = "Lerne die Protokolle für Diebstahl oder Verlust kennen";
+"home_mas_allá_estadio" = "Jenseits des Stadions";
+"home_alineaciones_jugadores" = "Aufstellungen und Spieler";
+"home_conoce_alineaciones" = "Finde heraus, welche Aufstellungen und Spieler die Spannung des Spiels bringen werden.";
+"home_cuenta_regresiva" = "Countdown zur Fußball-WM 2026";
+
+// TimeBox
+"dias" = "Tage";
+"horas" = "Std";
+"minutos" = "Min";
+"segundos" = "Sek";
+
+// Widgets / Secciones
+"register_interest_teams_matches" = "Registriere die Teams und Spiele, die dich interessieren";
+"search_stadium_city" = "Stadion oder Stadt suchen...";
+"news_and_more" = "Nachrichten und mehr";
+"pre_sale_phase_worldcup" = "Die erste Vorverkaufsphase der Weltmeisterschaft hat begonnen!";
+"pre_sale_phase_description" = "In dieser Phase können nur Visa-Karteninhaber teilnehmen, die sich auf der FIFA ID-Plattform registrieren und an einer Verlosung teilnehmen müssen.";
+"qualified_teams_title" = "Welche Teams haben sich qualifiziert?";
+"qualified_teams_description" = "Länder der UEFA, CONMEBOL, CONCACAF, AFC, OFC und CAF organisieren Qualifikationsspiele, um zu bestimmen, wer zum Turnier kommt.";
+
+// Clima
+"weather_partially_cloudy" = "Teilweise bewölkt";
+"weather_sunny" = "Sonnig";
+"weather_thunderstorms" = "Gewitter";
+"weather_cloudy" = "Bewölkt";
+
+// Seguridad
+"seguridad_title" = "Sicherheit";
+"seguridad_subtitle" = "Ressourcen und Hilfe im Notfall";
+"boton_panico_title" = "Notfallknopf";
+"numeros_emergencia_title" = "Notrufnummern";
+"emergencia_911" = "911";
+"emergencia_text" = "Notfälle";
+"pais_mexico" = "Mexiko";
+"denuncia_anonima" = "Anonyme Meldung";
+"auxilio_vial" = "Straßenhilfe";
+"cfe" = "CFE";
+"linea_apoyo_mujeres" = "Frauenunterstützungslinie";
+"pais_eeuu" = "USA";
+"policia_no_urgente" = "Polizei (nicht dringend)";
+"alto_trata" = "Stoppt Menschenhandel";
+"reporte_atf" = "ATF-Bericht (Waffen)";
+"pais_canada" = "Kanada";
+"ayuda_comunitaria" = "Gemeinschaftshilfe";
+"reporte_fraudes" = "Betrugsbericht";
+"manuales_title" = "Handbücher und Anleitungen";
+"manuales_mujeres" = "Handbücher für Frauen";
+"protocolos_via_publica" = "Protokolle im öffentlichen Raum";
+"guias_turisticas" = "Reiseführer";
+"protocolo_desastres" = "Katastrophenprotokoll";
+"novedades_title" = "Neuigkeiten";
+"noticias_mexico" = "Nachrichten aus Mexiko";
+"noticias_eeuu" = "Nachrichten aus den USA";
+"noticias_canada" = "Nachrichten aus Kanada";
+
+// TraduccionView
+"traduccion_titulo" = "Echtzeitübersetzung";
+"traduccion_idioma_origen" = "Ausgangssprache";
+"traduccion_idioma_destino" = "Zielsprache";
+"traduccion_texto_reconocido" = "Erkannter Text";
+"traduccion_texto_traducido" = "Übersetzung";
+"traduccion_esperando" = "Warte auf Spracheingabe...";
+"error" = "Fehler";
+"aceptar" = "Akzeptieren";
+"permiso_microfono_denegado" = "Mikrofonberechtigung verweigert. Bitte in den Einstellungen aktivieren.";
+"permiso_voz_denegado" = "Spracherkennungsberechtigung verweigert. Bitte in den Einstellungen aktivieren.";
+"error_configurar_audio" = "Fehler beim Einrichten der Audiositzung.";
+"error_inicio_reconocimiento" = "Fehler beim Starten der Spracherkennung.";
+"error_reconocedor_no_disponible" = "Spracherkenner nicht verfügbar.";
+"error_inicio_audio" = "Fehler beim Starten der Audioaufnahme.";
+"noticia_y_mas" = "Nachrichten und mehr";
+"pulsa_ver_mas" = "Tippe für mehr...";

@@ -13,7 +13,7 @@ final class ZayplechBrain: ObservableObject {
     
     private(set) var learnedPairs: [String: String] = [
         "hola": "¡Hola! 🌸 Soy Zayplech, tu compañera virtual de seguridad y apoyo durante el Mundial. ¿Cómo te sientes hoy?",
-        "quien eres?": "Soy Zayplech, tu guía segura y amiga para todo lo relacionado con el Mundial Femenino 🪷",
+        "quien eres?": "Soy Zayplech, tu guía segura y amiga para todo lo relacionado con el Mundial 2026 🪷",
         "adios": "Hasta pronto 🌿 ¡Cuídate y recuerda revisar nuestros tips de seguridad!"
     ]
     

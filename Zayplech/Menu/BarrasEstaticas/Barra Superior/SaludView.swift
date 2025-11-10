@@ -17,11 +17,8 @@ struct SaludView: View {
     @State private var allergies = ""
     @State private var medications = ""
     @State private var conditions = ""
-    
     @State private var showHealthAlerts = false
     @State private var showPreventiveTips = false
-    
-    // Estados de despliegue
     @State private var showZones = false
     @State private var showTents = false
     @State private var showCenters = false
@@ -138,28 +135,20 @@ struct SaludView: View {
                         }
                     }
                     
-                    infoCard(title: "Primeros auxilios", color: .orange, icon: "cross.fill") {
-                        VStack(alignment: .leading, spacing: 10) {
-                            NavigationLink(destination: AidDetailView(title: "Desmayos", text: AidTexts.fainting)) {
-                                Label("Qué hacer en caso de desmayos", systemImage: "cross.circle.fill")
-                                    .font(.subheadline)
-                                    .foregroundColor(.naranjaMelocoton)
-                            }
-
-                            NavigationLink(destination: AidDetailView(title: "Insolación", text: "Texto para insolación próximamente...")) {
-                                Label("Qué hacer en caso de una insolación", systemImage: "sun.max.fill")
-                                    .font(.subheadline)
-                                    .foregroundColor(.naranjaMelocoton)
-                            }
-
-                            NavigationLink(destination: AidDetailView(title: "Cortaduras", text: "Texto para cortaduras próximamente...")) {
-                                Label("Qué hacer en caso de una cortadura", systemImage: "bandage.fill")
-                                    .font(.subheadline)
-                                    .foregroundColor(.naranjaMelocoton)
+                    infoCard(title: "Primeros Auxilios", color: .orange, icon: "pills.fill") {
+                        VStack(alignment: .leading, spacing: 6) {
+                            ForEach(firstAidItems, id: \.id) { item in
+                                NavigationLink(destination: AidDetailView(content: item.content)) {
+                                    Label("Qué hacer en caso de \(item.content.title.lowercased())",
+                                          systemImage: item.icon)
+                                        .font(.subheadline)
+                                        .foregroundColor(.naranjaMelocoton)
+                                        .padding(.vertical, 4)
+                                }
                             }
                         }
                     }
-                    
+
                     infoCard(title: "Farmacias cerca de mí", color: .blue, icon: "pill.fill") {
                         VStack(alignment: .leading, spacing: 6) {
                             ForEach([
@@ -181,7 +170,7 @@ struct SaludView: View {
                         Toggle("Consejos preventivos", isOn: $showPreventiveTips)
                     }
                     .padding()
-                    .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray.opacity(0.4), lineWidth: 1))
+                    .background(RoundedRectangle(cornerRadius: 15).stroke(Color.gray.opacity(0.4), lineWidth: 3))
                     .padding(.horizontal)
                 }
                 .padding(.vertical)
@@ -189,6 +178,18 @@ struct SaludView: View {
             .navigationTitle("Salud")
         }
     }
+    
+    struct AidItem: Identifiable {
+        let id = UUID()
+        let content: AidContent
+        var icon: String { content.steps.first?.icon ?? "cross.fill" }
+    }
+
+    let firstAidItems: [AidItem] = [
+        AidItem(content: faintingContent),
+        AidItem(content: heatstrokeContent),
+        AidItem(content: cutContent)
+    ]
     
     // MARK: - Componentes reutilizables
     func infoCard<Content: View>(title: String, color: Color, icon: String, content: () -> Content) -> some View {
@@ -234,31 +235,6 @@ struct SaludView: View {
             .padding(8)
             .background(Color.moradoMedio.opacity(0.1))
             .cornerRadius(10)
-        }
-    }
-}
-
-// MARK: - Vista de detalle de primeros auxilios
-struct AidDetailView: View {
-    let title: String
-    let text: String
-    
-    var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
-                Text(title)
-                    .font(.largeTitle)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.orange)
-
-                Text(text)
-                    .font(.body)
-                    .multilineTextAlignment(.leading)
-                    .lineSpacing(4)
-
-                Spacer()
-            }
-            .padding()
         }
     }
 }

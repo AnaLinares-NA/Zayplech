@@ -158,6 +158,7 @@ class VoiceRecognitionViewModel: ObservableObject {
 
 // MARK: - ProfileView
 struct TraduccionView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @StateObject private var viewModel: VoiceRecognitionViewModel
 
         init(isPreview: Bool = false) {

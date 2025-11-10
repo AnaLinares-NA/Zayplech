@@ -1,3 +1,10 @@
+//
+//  AidDetailView.swift
+//  Zayplech
+//
+//  Created by Ana Linares Guzmán on 07/11/25.
+//
+
 import SwiftUI
 
 struct AidDetailView: View {
@@ -5,44 +12,55 @@ struct AidDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .center, spacing: 30) {
-                
+            VStack(spacing: 20) {
                 Text(content.title)
                     .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.orange)
-                    .multilineTextAlignment(.center)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.orange)
                     .padding(.top)
                 
-                ForEach(Array(content.steps.enumerated()), id: \.1.id) { index, step in
-                    VStack(spacing: 15) {
-                        Text("Paso \(index + 1)")
-                            .font(.system(size: 40, weight: .heavy, design: .rounded))
-                            .foregroundColor(.orange)
-                        
-                        Image(systemName: step.icon)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 60, height: 60)
-                            .foregroundColor(.orange.opacity(0.8))
-                        
-                        Text(step.text)
-                            .font(.title3)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal)
+                VStack(alignment: .leading, spacing: 20) {
+                    ForEach(content.steps) { step in
+                        StepView(step: step)
                     }
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.orange.opacity(0.1))
-                    )
                 }
+                .padding()
                 
-                Spacer(minLength: 20)
+                Spacer()
             }
-            .padding()
+            .padding(.horizontal)
         }
-        .navigationTitle(content.title)
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
+
+struct StepView: View {
+    let step: AidStep
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            Text("Paso \(step.number)")
+                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.orange)
+            
+            Image(systemName: step.icon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60, height: 60)
+                .foregroundColor(.orange)
+                .frame(maxWidth: .infinity)
+            
+            Text(step.description)
+                .font(.body)
+                .multilineTextAlignment(.leading)
+                .lineSpacing(4)
+        }
+        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 15)
+                .fill(Color.orange.opacity(0.1))
+        )
+    }
+}
+

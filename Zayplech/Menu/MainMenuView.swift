@@ -8,82 +8,69 @@
 import SwiftUI
 
 struct MainMenuView: View {
+    @EnvironmentObject var localizationManager: LocalizationManager
     @AppStorage("selectedTab") private var selectedTab: Tab = .home
     @State private var showProfile = false
     @State private var goToProfile = false
-
+    @State private var showMenu = false
+    @State private var goToTusIntereses = false
+    @State private var goToSalud = false
     
     var body: some View {
         NavigationStack {
-            
-            VStack(spacing: 0) {
+            ZStack(alignment: .topLeading) {
+                VStack(spacing: 0) {
                     
                     NavigationLink(
                         destination: PerfilView(),
                         isActive: $goToProfile,
-                        label: {
-                            EmptyView()
-                        }
+                        label: { EmptyView() }
                     )
                     .hidden()
                     
-                    HeaderView(goToProfile: $goToProfile)
-                
-                Spacer()
-
-                // MARK: - Contenido principal según tab seleccionado
-                switch selectedTab {
-                case .home:
-                    ScrollView(.vertical, showsIndicators: false) {
-                        Spacer()
-                        
-                        VStack(alignment: .leading, spacing: 25) {
-                            
-                            AlertCarousel()
-                            
-                            Text(t("mainmenu_que_necesitas"))
-                                .font(.title3.bold())
-                                .padding(.horizontal)
-                            
-                            FeaturesGrid()
+                    HeaderView(goToProfile: $goToProfile, showMenu: $showMenu)
+                    
+                    Spacer()
+                    
+                    Group {
+                        switch selectedTab {
+                        case .home: HomeView()
+                        case .translator: TraduccionView()
+                        case .ai: IAView()
+                        case .security: SeguridadView()
+                        case .map: MapView()
                         }
-                        .padding(.bottom, 80)
                     }
-                    .background(Color.amarilloClaro.opacity(0.2))
                     
-                case .translator:
-                    Text(t("mainmenu_traductor_placeholder"))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.amarilloClaro.opacity(0.1))
-                    
-                case .ai:
-                    Text(t("mainmenu_ia_placeholder"))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.lilaSuave.opacity(0.1))
-                    
-                case .security:
-                    Text(t("mainmenu_seguridad_placeholder"))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.rosaChicle.opacity(0.1))
-                    
-                case .map:
-                    Text(t("mainmenu_mapa_placeholder"))
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .background(Color.azulCielo.opacity(0.1))
+                    CustomTabBar(selectedTab: $selectedTab)
+
                 }
+                .edgesIgnoringSafeArea(.bottom)
+                .navigationBarBackButtonHidden()
                 
-                // MARK: - TabBar
-                CustomTabBar(selectedTab: $selectedTab)
-                        .background(Color.blanco)
-                        .shadow(radius: 5)
+                if showMenu {
+                    MenuView(
+                        showMenu: $showMenu,
+                        selectedTab: $selectedTab,
+                        goToTusIntereses: $goToTusIntereses,
+                        goToSalud: $goToSalud
+                    )
+                    .frame(width: 250)
+                    
+                    .shadow(radius: 5)
+                    .transition(.move(edge: .leading))
+                    .environmentObject(LocalizationManager.shared)
+                }
             }
-            .edgesIgnoringSafeArea(.bottom)
         }
     }
 }
 
+
 // MARK: - Feature Model
 struct Feature: Identifiable {
+    @EnvironmentObject var localizationManager: LocalizationManager
+    
     let id = UUID()
     let key: String
     let icon: String
@@ -102,102 +89,6 @@ let features: [Feature] = [
     Feature(key: "feature_economy", icon: "dollarsign.circle.fill", color: .purple),
     Feature(key: "feature_assistance", icon: "person.2.fill", color: .teal)
 ]
-
-// MARK: - FeatureCard
-struct FeatureCard: View {
-    let feature: Feature
-
-    var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: feature.icon)
-                .font(.system(size: 28))
-                .foregroundColor(.white)
-                .padding()
-                .background(feature.color)
-                .clipShape(Circle())
-
-            Text(feature.title)
-                .font(.caption)
-                .foregroundColor(.primary)
-                .multilineTextAlignment(.center)
-        }
-        .frame(width: 100, height: 120)
-        .background(Color(.systemGray6))
-        .cornerRadius(16)
-        .shadow(radius: 1)
-    }
-}
-
-// MARK: - FeaturesGrid
-struct FeaturesGrid: View {
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
-
-    var body: some View {
-        LazyVGrid(columns: columns, spacing: 20) {
-            ForEach(features) { feature in
-                FeatureCard(feature: feature)
-            }
-        }
-        .padding(.horizontal)
-    }
-}
-
-// MARK: - AlertCard
-struct AlertCard: View {
-    var title: String
-    var icon: String
-    var color: Color
-
-    var body: some View {
-        HStack(spacing: 12) {
-            Image(systemName: icon)
-                .font(.title2)
-                .foregroundColor(.white)
-                .padding(10)
-                .background(color)
-                .clipShape(Circle())
-
-            Text(title)
-                .font(.subheadline)
-                .foregroundColor(.primary)
-                .lineLimit(2)
-                .multilineTextAlignment(.leading)
-
-            Spacer()
-        }
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(16)
-        .shadow(radius: 1)
-        .frame(width: 300)
-    }
-}
-
-// MARK: - AlertCarousel
-struct AlertCarousel: View {
-    let alerts = [
-        (t("alert_sarampion"), "exclamationmark.triangle.fill", Color.red),
-        (t("alert_metro"), "tram.fill", Color.orange),
-        (t("alert_partido"), "calendar.badge.exclamationmark", Color.blue)
-    ]
-
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 16) {
-                ForEach(alerts, id: \.0) { alert in
-                    AlertCard(title: alert.0, icon: alert.1, color: alert.2)
-                }
-            }
-            .padding(.horizontal)
-        }
-    }
-}
-
-
 
 #Preview {
     MainMenuView()

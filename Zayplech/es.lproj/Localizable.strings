@@ -1,0 +1,161 @@
+/* 
+  Localizable.strings
+  Zayplech
+
+  Created by Ana Linares Guzmán on 20/10/25.
+  
+*/
+
+// EventoSelectionView
+"evento_titulo" = "Selecciona el evento de tu interés";
+"evento_deportes" = "Deportes";
+"evento_conciertos" = "Conciertos";
+"evento_desfiles" = "Desfiles";
+"evento_ferias" = "Ferias";
+"evento_congresos" = "Congresos";
+"evento_meet_greet" = "Meet & Greet";
+// EventoSelectionView - lista deportes
+"evento_deportes_titulo" = "Eventos deportivos";
+"evento_deportes_mundial" = "Mundial 2026";
+
+//ContentView
+"skip_button" = "Omitir";
+"next_button" = "Siguiente";
+"start_button" = "¡Vamos al mundial!";
+
+"onboarding_1_title" = "Seguridad en todo momento";
+"onboarding_1_desc" = "Botón de pánico, zonas seguras, alertas oficiales y contacto directo con autoridades.";
+
+"onboarding_2_title" = "Asistencia médica confiable";
+"onboarding_2_desc" = "Hospitales cercanos, atención inmediata y cobertura médica internacional.";
+
+"onboarding_3_title" = "Idioma sin barreras";
+"onboarding_3_desc" = "Traducción en tiempo real, frases útiles y compatibilidad con modismos locales.";
+
+"onboarding_4_title" = "Movilidad segura y eficiente";
+"onboarding_4_desc" = "Rutas seguras, zonas de riesgo, transporte público y puntos turísticos.";
+
+"onboarding_5_title" = "Economía transparente";
+"onboarding_5_desc" = "Tipos de cambio en tiempo real, alertas de estafas y precios inflados.";
+
+"onboarding_6_title" = "Tu asistente del Mundial";
+"onboarding_6_desc" = "Horarios de partidos, verificación de boletos, pertenencias perdidas y más.";
+
+//RegistroView
+"registro_titulo" = "Crea tu cuenta";
+"registro_phone" = "Número telefónico";
+"registro_masculino" = "Masculino";
+"registro_femenino" = "Femenino";
+"registro_pref_no_decir" = "Prefiero no decirlo";
+"registro_email" = "Correo electrónico";
+"registro_email_placeholder" = "Correo electrónico";
+"registro_phone_placeholder" = "Número telefónico";
+"registro_first_name" = "Nombre(s)";
+"registro_last_name" = "Apellido(s)";
+"registro_password" = "Contraseña";
+"registro_next" = "Continuar";
+"registro_tienes_cuenta" = "¿Ya tienes una cuenta?";
+"registro_ir_login" = "Iniciar sesión";
+"registro_social" = "O accede con";
+"registro_pass_min" = "mín. 8 caracteres";
+"registro_pass_upper" = "1 mayúscula";
+"registro_pass_num" = "1 número";
+"registro_confirmar_password" = "Confirmar contraseña";
+"registro_error_confirmacion" = "Error: Las contraseñas no coinciden";
+
+//LoginView
+"login_titulo" = "Iniciar sesión";
+"login_recordar_usuario" = "Recordar usuario";
+"login_olvidaste_contrasena" = "¿Olvidaste tu contraseña?";
+"login_boton" = "Entrar";
+"login_eres_nuevo" = "¿Eres nuevo?";
+"login_error" = "Por favor ingresa una contraseña válida";
+
+// TabBar
+"tab_home" = "Inicio";
+"tab_translator" = "Traductor";
+"tab_ai" = "IA";
+"tab_security" = "Seguridad";
+"tab_map" = "Mapa";
+// Header
+"mainmenu_title" = "¡Bienvenid@ al mundial!";
+
+// HomeView
+"home_no_te_pierdas_gol" = "¡No te pierdas ningún gol!";
+"home_clima_emocion" = "¡No dejes que el clima te arruine la emoción!";
+"home_estadio" = "¿Ya estás en el estadio?";
+"home_necesitas_ayuda" = "¿Necesitas Ayuda?";
+"home_identificar_seguridad" = "Identificar al personal de seguridad más cercano a ti";
+"home_zonas_accesibilidad" = "Zonas de accesibilidad";
+"home_identifica_zonas_discapacidad" = "Identifica las zonas de accesibilidad para las personas con discapacidad";
+"home_perdiste_algo" = "¿Perdiste algo?";
+"home_protocolos_robo_extravio" = "Conoce los protocolos en caso de robo o extravío";
+"home_mas_allá_estadio" = "Más allá del estadio";
+"home_alineaciones_jugadores" = "Alineaciones y jugadores";
+"home_conoce_alineaciones" = "Conoce cuáles serán las alineaciones y los jugadores que te harán vivir la emoción del deporte.";
+"home_cuenta_regresiva" = "Cuenta regresiva para la Copa Mundial 2026";
+// TimeBox
+"dias" = "Días";
+"horas" = "Hrs";
+"minutos" = "Min";
+"segundos" = "Seg";
+// Widgets / Secciones
+"register_interest_teams_matches" = "Registra los equipos y partidos de tu interés";
+"search_stadium_city" = "Buscar estadio o ciudad...";
+"news_and_more" = "Noticias y más";
+"pre_sale_phase_worldcup" = "¡Inicia la primera fase de preventas del mundial!";
+"pre_sale_phase_description" = "En esta etapa, solo podrán participar los tarjetahabientes Visa, quienes deben registrarse en la plataforma FIFA ID y entrar a un sorteo.";
+"qualified_teams_title" = "¿Cuáles son las selecciones clasificadas?";
+"qualified_teams_description" = "Países de UEFA, CONMEBOL, CONCACAF, AFC, OFC y CAF organizarán sus eliminatorias para determinar quién llega al torneo.";
+// Clima
+"weather_partially_cloudy" = "Parcialmente nublado";
+"weather_sunny" = "Soleado";
+"weather_thunderstorms" = "Tormentas";
+"weather_cloudy" = "Nublado";
+
+//Seguridad
+"seguridad_title" = "Seguridad";
+"seguridad_subtitle" = "Recursos y asistencia en caso de emergencia";
+"boton_panico_title" = "Botón de Pánico";
+"numeros_emergencia_title" = "Números de emergencia";
+"emergencia_911" = "911";
+"emergencia_text" = "Emergencias";
+"pais_mexico" = "México";
+"denuncia_anonima" = "Denuncia Anónima";
+"auxilio_vial" = "Auxilio Vial";
+"cfe" = "CFE";
+"linea_apoyo_mujeres" = "Línea de apoyo a mujeres";
+"pais_eeuu" = "E.U.";
+"policia_no_urgente" = "Policía No Urgente";
+"alto_trata" = "Alto a la Trata";
+"reporte_atf" = "Reporte ATF (Armas)";
+"pais_canada" = "Canadá";
+"ayuda_comunitaria" = "Ayuda Comunitaria";
+"reporte_fraudes" = "Reporte Fraudes";
+"manuales_title" = "Manuales e instructivos";
+"manuales_mujeres" = "Manuales para mujeres";
+"protocolos_via_publica" = "Protocolos en vía pública";
+"guias_turisticas" = "Guías turísticas";
+"protocolo_desastres" = "Protocolo ante desastres";
+"novedades_title" = "Novedades";
+"noticias_mexico" = "Noticias en México";
+"noticias_eeuu" = "Noticias en E.U.";
+"noticias_canada" = "Noticias en Canadá";
+
+//TraduccionView
+"traduccion_titulo" = "Traducción en tiempo real";
+"traduccion_idioma_origen" = "Idioma Origen";
+"traduccion_idioma_destino" = "Idioma Destino";
+"traduccion_texto_reconocido" = "Texto Reconocido";
+"traduccion_texto_traducido" = "Traducción";
+"traduccion_esperando" = "Esperando entrada de voz...";
+"error" = "Error";
+"aceptar" = "Aceptar";
+"permiso_microfono_denegado" = "Permiso de micrófono denegado. Por favor habilítalo en Ajustes.";
+"permiso_voz_denegado" = "Permiso de reconocimiento de voz denegado. Por favor habilítalo en Ajustes.";
+"error_configurar_audio" = "Error al configurar la sesión de audio.";
+"error_inicio_reconocimiento" = "Error al iniciar el reconocimiento de voz.";
+"error_reconocedor_no_disponible" = "Reconocedor de voz no disponible.";
+"error_inicio_audio" = "Error al iniciar la grabación de audio.";
+"noticia_y_mas" = "Noticias y más";
+"pulsa_ver_mas" = "Pulsa para ver más...";

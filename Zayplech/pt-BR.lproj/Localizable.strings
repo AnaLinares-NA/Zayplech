@@ -45,6 +45,9 @@
 "registro_titulo" = "Crie sua conta";
 "registro_phone" = "Número de telefone";
 "registro_email" = "Endereço de e-mail";
+"registro_masculino" = "Masculino";
+"registro_femenino" = "Feminino";
+"registro_pref_no_decir" = "Prefiro não informar";
 "registro_email_placeholder" = "Endereço de e-mail";
 "registro_phone_placeholder" = "Número de telefone";
 "registro_first_name" = "Nome";
@@ -68,3 +71,95 @@
 "login_eres_nuevo" = "Novo por aqui?";
 "login_error" = "Por favor, insira uma senha válida";
 
+// TabBar
+"tab_home" = "Início";
+"tab_translator" = "Tradutor";
+"tab_ai" = "IA";
+"tab_security" = "Segurança";
+"tab_map" = "Mapa";
+
+// Header
+"mainmenu_title" = "Bem-vindo à Copa do Mundo!";
+
+// HomeView
+"home_no_te_pierdas_gol" = "Não perca nenhum gol!";
+"home_clima_emocion" = "Não deixe o tempo estragar a emoção!";
+"home_estadio" = "Já está no estádio?";
+"home_necesitas_ayuda" = "Precisa de ajuda?";
+"home_identificar_seguridad" = "Identificar o segurança mais próximo";
+"home_zonas_accesibilidad" = "Áreas acessíveis";
+"home_identifica_zonas_discapacidad" = "Identificar áreas acessíveis para pessoas com deficiência";
+"home_perdiste_algo" = "Perdeu algo?";
+"home_protocolos_robo_extravio" = "Confira os protocolos em caso de roubo ou perda";
+"home_mas_allá_estadio" = "Além do estádio";
+"home_alineaciones_jugadores" = "Escalações e jogadores";
+"home_conoce_alineaciones" = "Descubra quais serão as escalações e jogadores que farão você viver a emoção do esporte.";
+"home_cuenta_regresiva" = "Contagem regressiva para a Copa do Mundo 2026";
+
+// TimeBox
+"dias" = "Dias";
+"horas" = "Horas";
+"minutos" = "Min";
+"segundos" = "Seg";
+
+// Widgets / Secciones
+"register_interest_teams_matches" = "Registre os times e partidas de seu interesse";
+"search_stadium_city" = "Buscar estádio ou cidade...";
+"news_and_more" = "Notícias e mais";
+"pre_sale_phase_worldcup" = "A primeira fase de pré-venda da Copa do Mundo começou!";
+"pre_sale_phase_description" = "Nesta fase, apenas titulares de cartões Visa podem participar, cadastrando-se na plataforma FIFA ID e participando de um sorteio.";
+"qualified_teams_title" = "Quais equipes estão classificadas?";
+"qualified_teams_description" = "Os países da UEFA, CONMEBOL, CONCACAF, AFC, OFC e CAF realizarão suas qualificações para determinar quem participará do torneio.";
+
+// Clima
+"weather_partially_cloudy" = "Parcialmente nublado";
+"weather_sunny" = "Ensolarado";
+"weather_thunderstorms" = "Trovoadas";
+"weather_cloudy" = "Nublado";
+
+// Seguridad
+"seguridad_title" = "Segurança";
+"seguridad_subtitle" = "Recursos e assistência em emergências";
+"boton_panico_title" = "Botão de pânico";
+"numeros_emergencia_title" = "Números de emergência";
+"emergencia_911" = "911";
+"emergencia_text" = "Emergência";
+"pais_mexico" = "México";
+"denuncia_anonima" = "Denúncia anônima";
+"auxilio_vial" = "Auxílio viário";
+"cfe" = "CFE";
+"linea_apoyo_mujeres" = "Linha de apoio às mulheres";
+"pais_eeuu" = "EUA";
+"policia_no_urgente" = "Polícia não urgente";
+"alto_trata" = "Pare o tráfico de pessoas";
+"reporte_atf" = "Relatório ATF (armas)";
+"pais_canada" = "Canadá";
+"ayuda_comunitaria" = "Ajuda comunitária";
+"reporte_fraudes" = "Relatório de fraudes";
+"manuales_title" = "Manuais e guias";
+"manuales_mujeres" = "Manuais para mulheres";
+"protocolos_via_publica" = "Protocolos em espaços públicos";
+"guias_turisticas" = "Guias turísticos";
+"protocolo_desastres" = "Protocolo em caso de desastre";
+"novedades_title" = "Novidades";
+"noticias_mexico" = "Notícias do México";
+"noticias_eeuu" = "Notícias dos EUA";
+"noticias_canada" = "Notícias do Canadá";
+
+// TraduccionView
+"traduccion_titulo" = "Tradução em tempo real";
+"traduccion_idioma_origen" = "Idioma de origem";
+"traduccion_idioma_destino" = "Idioma de destino";
+"traduccion_texto_reconocido" = "Texto reconhecido";
+"traduccion_texto_traducido" = "Tradução";
+"traduccion_esperando" = "Aguardando entrada de voz...";
+"error" = "Erro";
+"aceptar" = "Aceitar";
+"permiso_microfono_denegado" = "Permissão do microfone negada. Ative nas configurações.";
+"permiso_voz_denegado" = "Permissão de reconhecimento de voz negada. Ative nas configurações.";
+"error_configurar_audio" = "Erro ao configurar o áudio.";
+"error_inicio_reconocimiento" = "Erro ao iniciar o reconhecimento de voz.";
+"error_reconocedor_no_disponible" = "Reconhecimento de voz não disponível.";
+"error_inicio_audio" = "Erro ao iniciar a gravação de áudio.";
+"noticia_y_mas" = "Notícias e mais";
+"pulsa_ver_mas" = "Toque para ver mais...";

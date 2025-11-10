@@ -1,0 +1,167 @@
+/* 
+  Localizable.strings
+  Zayplech
+
+  Created by Ana Linares Guzmán on 20/10/25.
+  
+*/
+
+// EventoSelectionView
+"evento_titulo" = "Select the event you're interested in";
+"evento_deportes" = "Sports";
+"evento_conciertos" = "Concerts";
+"evento_desfiles" = "Parades";
+"evento_ferias" = "Fairs";
+"evento_congresos" = "Conferences";
+"evento_meet_greet" = "Meet & Greet";
+// EventoSelectionView - lista deportes
+"evento_deportes_titulo" = "Sports Events";
+"evento_deportes_mundial" = "World Cup 2026";
+
+
+//ContentView
+"skip_button" = "Skip";
+"next_button" = "Next";
+"start_button" = "Let’s go to the World Cup!";
+
+"onboarding_1_title" = "Safety at all times";
+"onboarding_1_desc" = "Panic button, safe zones, official alerts, and direct contact with authorities.";
+
+"onboarding_2_title" = "Reliable medical assistance";
+"onboarding_2_desc" = "Nearby hospitals, immediate care, and international medical coverage.";
+
+"onboarding_3_title" = "No language barriers";
+"onboarding_3_desc" = "Real-time translation, useful phrases, and compatibility with local idioms.";
+
+"onboarding_4_title" = "Safe and efficient mobility";
+"onboarding_4_desc" = "Safe routes, risk areas, public transport, and tourist hotspots.";
+
+"onboarding_5_title" = "Transparent economy";
+"onboarding_5_desc" = "Real-time exchange rates, scam alerts, and inflated prices.";
+
+"onboarding_6_title" = "Your World Cup assistant";
+"onboarding_6_desc" = "Match schedules, ticket verification, lost items, and more.";
+
+//RegistroView
+"registro_titulo" = "Create your account";
+"registro_phone" = "Phone number";
+"registro_email" = "Email address";
+"registro_masculino" = "Male";
+"registro_femenino" = "Female";
+"registro_pref_no_decir" = "Prefer not to say";
+"registro_email_placeholder" = "Email address";
+"registro_phone_placeholder" = "Phone number";
+"registro_first_name" = "First name";
+"registro_last_name" = "Last name";
+"registro_password" = "Password";
+"registro_next" = "Continue";
+"registro_tienes_cuenta" = "Already have an account?";
+"registro_ir_login" = "Sign in";
+"registro_social" = "Or sign in with";
+"registro_pass_min" = "min. 8 characters";
+"registro_pass_upper" = "1 uppercase";
+"registro_pass_num" = "1 number";
+"registro_confirmar_password" = "Confirm password";
+"registro_error_confirmacion" = "Error: Passwords do not match";
+
+//LoginView
+"login_titulo" = "Sign In";
+"login_recordar_usuario" = "Remember me";
+"login_olvidaste_contrasena" = "Forgot your password?";
+"login_boton" = "Log In";
+"login_eres_nuevo" = "New here?";
+"login_error" = "Please enter a valid password";
+
+// TabBar
+"tab_home" = "Home";
+"tab_translator" = "Translator";
+"tab_ai" = "AI";
+"tab_security" = "Security";
+"tab_map" = "Map";
+
+// Header
+"mainmenu_title" = "Welcome to the World Cup!";
+
+// HomeView
+"home_no_te_pierdas_gol" = "Don't miss any goal!";
+"home_clima_emocion" = "Don't let the weather ruin the excitement!";
+"home_estadio" = "Are you already at the stadium?";
+"home_necesitas_ayuda" = "Do you need help?";
+"home_identificar_seguridad" = "Identify the nearest security personnel";
+"home_zonas_accesibilidad" = "Accessibility areas";
+"home_identifica_zonas_discapacidad" = "Identify accessibility areas for people with disabilities";
+"home_perdiste_algo" = "Did you lose something?";
+"home_protocolos_robo_extravio" = "Learn protocols for theft or loss";
+"home_mas_allá_estadio" = "Beyond the stadium";
+"home_alineaciones_jugadores" = "Line-ups and players";
+"home_conoce_alineaciones" = "Find out which line-ups and players will bring you the excitement of the game.";
+"home_cuenta_regresiva" = "Countdown to the 2026 World Cup";
+
+// TimeBox
+"dias" = "Days";
+"horas" = "Hrs";
+"minutos" = "Min";
+"segundos" = "Sec";
+
+// Widgets / Secciones
+"register_interest_teams_matches" = "Register the teams and matches you are interested in";
+"search_stadium_city" = "Search stadium or city...";
+"news_and_more" = "News and more";
+"pre_sale_phase_worldcup" = "The first pre-sale phase of the World Cup has started!";
+"pre_sale_phase_description" = "In this stage, only Visa cardholders can participate. They must register on the FIFA ID platform and enter a lottery.";
+"qualified_teams_title" = "Which teams have qualified?";
+"qualified_teams_description" = "Countries from UEFA, CONMEBOL, CONCACAF, AFC, OFC, and CAF will organize qualifiers to determine who reaches the tournament.";
+
+// Clima
+"weather_partially_cloudy" = "Partly cloudy";
+"weather_sunny" = "Sunny";
+"weather_thunderstorms" = "Thunderstorms";
+"weather_cloudy" = "Cloudy";
+
+// Seguridad
+"seguridad_title" = "Security";
+"seguridad_subtitle" = "Resources and assistance in case of emergency";
+"boton_panico_title" = "Panic Button";
+"numeros_emergencia_title" = "Emergency Numbers";
+"emergencia_911" = "911";
+"emergencia_text" = "Emergencies";
+"pais_mexico" = "Mexico";
+"denuncia_anonima" = "Anonymous Report";
+"auxilio_vial" = "Road Assistance";
+"cfe" = "CFE";
+"linea_apoyo_mujeres" = "Women's support line";
+"pais_eeuu" = "USA";
+"policia_no_urgente" = "Police (Non-Urgent)";
+"alto_trata" = "Stop Human Trafficking";
+"reporte_atf" = "ATF Report (Weapons)";
+"pais_canada" = "Canada";
+"ayuda_comunitaria" = "Community Assistance";
+"reporte_fraudes" = "Fraud Report";
+"manuales_title" = "Manuals and Guides";
+"manuales_mujeres" = "Manuals for Women";
+"protocolos_via_publica" = "Public Protocols";
+"guias_turisticas" = "Tourist Guides";
+"protocolo_desastres" = "Disaster Protocol";
+"novedades_title" = "News";
+"noticias_mexico" = "News in Mexico";
+"noticias_eeuu" = "News in USA";
+"noticias_canada" = "News in Canada";
+
+// TraduccionView
+"traduccion_titulo" = "Real-time Translation";
+"traduccion_idioma_origen" = "Source Language";
+"traduccion_idioma_destino" = "Target Language";
+"traduccion_texto_reconocido" = "Recognized Text";
+"traduccion_texto_traducido" = "Translation";
+"traduccion_esperando" = "Waiting for voice input...";
+"error" = "Error";
+"aceptar" = "Accept";
+"permiso_microfono_denegado" = "Microphone permission denied. Please enable it in Settings.";
+"permiso_voz_denegado" = "Voice recognition permission denied. Please enable it in Settings.";
+"error_configurar_audio" = "Error configuring audio session.";
+"error_inicio_reconocimiento" = "Error starting voice recognition.";
+"error_reconocedor_no_disponible" = "Voice recognizer not available.";
+"error_inicio_audio" = "Error starting audio recording.";
+"noticia_y_mas" = "News and more";
+"pulsa_ver_mas" = "Tap to see more...";
+

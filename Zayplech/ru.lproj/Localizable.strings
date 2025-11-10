@@ -1,0 +1,164 @@
+/*
+  Localizable.strings
+  Zayplech
+
+  Russian (Русский) – Created by Ana Linares Guzmán on 20/10/25.
+*/
+
+// EventoSelectionView
+"evento_titulo" = "Выберите интересующее вас событие";
+"evento_deportes" = "Спорт";
+"evento_conciertos" = "Концерты";
+"evento_desfiles" = "Парады";
+"evento_ferias" = "Ярмарки";
+"evento_congresos" = "Конференции";
+"evento_meet_greet" = "Встреча и приветствие";
+// EventoSelectionView - lista deportes
+"evento_deportes_titulo" = "Спортивные события";
+"evento_deportes_mundial" = "Чемпионат мира 2026";
+
+//ContentView
+"skip_button" = "Пропустить";
+"next_button" = "Далее";
+"start_button" = "Вперёд к Чемпионату мира!";
+
+"onboarding_1_title" = "Безопасность в любое время";
+"onboarding_1_desc" = "Кнопка тревоги, безопасные зоны, официальные оповещения и прямой контакт с властями.";
+
+"onboarding_2_title" = "Надёжная медицинская помощь";
+"onboarding_2_desc" = "Ближайшие больницы, экстренная помощь и международное медицинское покрытие.";
+
+"onboarding_3_title" = "Языковых барьеров больше нет";
+"onboarding_3_desc" = "Мгновенный перевод, полезные фразы и поддержка местных выражений.";
+
+"onboarding_4_title" = "Безопасное и удобное передвижение";
+"onboarding_4_desc" = "Безопасные маршруты, зоны риска, общественный транспорт и туристические места.";
+
+"onboarding_5_title" = "Прозрачная экономика";
+"onboarding_5_desc" = "Актуальные курсы валют, предупреждения о мошенничестве и завышенных ценах.";
+
+"onboarding_6_title" = "Твой помощник на Чемпионате мира";
+"onboarding_6_desc" = "Расписание матчей, проверка билетов, утерянные вещи и многое другое.";
+
+//RegistroView
+"registro_titulo" = "Создайте аккаунт";
+"registro_phone" = "Номер телефона";
+"registro_email" = "Электронная почта";
+"registro_masculino" = "Мужской";
+"registro_femenino" = "Женский";
+"registro_pref_no_decir" = "Предпочитаю не указывать";
+"registro_email_placeholder" = "Электронная почта";
+"registro_phone_placeholder" = "Номер телефона";
+"registro_first_name" = "Имя";
+"registro_last_name" = "Фамилия";
+"registro_password" = "Пароль";
+"registro_next" = "Продолжить";
+"registro_tienes_cuenta" = "Уже есть аккаунт?";
+"registro_ir_login" = "Войти";
+"registro_social" = "Или войдите через";
+"registro_pass_min" = "мин. 8 символов";
+"registro_pass_upper" = "1 заглавная";
+"registro_pass_num" = "1 цифра";
+"registro_confirmar_password" = "Подтвердите пароль";
+"registro_error_confirmacion" = "Ошибка: пароли не совпадают";
+
+//LoginView
+"login_titulo" = "Вход";
+"login_recordar_usuario" = "Запомнить меня";
+"login_olvidaste_contrasena" = "Забыли пароль?";
+"login_boton" = "Войти";
+"login_eres_nuevo" = "Впервые здесь?";
+"login_error" = "Пожалуйста, введите действительный пароль";
+
+// TabBar
+"tab_home" = "Главная";
+"tab_translator" = "Переводчик";
+"tab_ai" = "ИИ";
+"tab_security" = "Безопасность";
+"tab_map" = "Карта";
+
+// Header
+"mainmenu_title" = "Добро пожаловать на Чемпионат мира!";
+
+// HomeView
+"home_no_te_pierdas_gol" = "Не пропустите ни один гол!";
+"home_clima_emocion" = "Не позволяйте погоде испортить эмоции!";
+"home_estadio" = "Вы уже на стадионе?";
+"home_necesitas_ayuda" = "Нужна помощь?";
+"home_identificar_seguridad" = "Найти ближайшего сотрудника охраны";
+"home_zonas_accesibilidad" = "Доступные зоны";
+"home_identifica_zonas_discapacidad" = "Найти доступные зоны для людей с ограниченными возможностями";
+"home_perdiste_algo" = "Вы что-то потеряли?";
+"home_protocolos_robo_extravio" = "Узнайте протоколы при краже или потере";
+"home_mas_allá_estadio" = "За пределами стадиона";
+"home_alineaciones_jugadores" = "Составы и игроки";
+"home_conoce_alineaciones" = "Узнайте, какие составы и игроки подарят вам спортивные эмоции.";
+"home_cuenta_regresiva" = "Обратный отсчет до Чемпионата мира 2026";
+
+// TimeBox
+"dias" = "Дни";
+"horas" = "Часы";
+"minutos" = "Мин";
+"segundos" = "Сек";
+
+// Widgets / Secciones
+"register_interest_teams_matches" = "Зарегистрируйте интересующие команды и матчи";
+"search_stadium_city" = "Поиск стадиона или города...";
+"news_and_more" = "Новости и другое";
+"pre_sale_phase_worldcup" = "Началась первая фаза предпродажи Чемпионата мира!";
+"pre_sale_phase_description" = "На этом этапе участвовать могут только владельцы карт Visa. Они должны зарегистрироваться на платформе FIFA ID и принять участие в розыгрыше.";
+"qualified_teams_title" = "Какие команды прошли квалификацию?";
+"qualified_teams_description" = "Страны UEFA, CONMEBOL, CONCACAF, AFC, OFC и CAF проведут квалификацию, чтобы определить участников турнира.";
+
+// Clima
+"weather_partially_cloudy" = "Переменная облачность";
+"weather_sunny" = "Солнечно";
+"weather_thunderstorms" = "Гроза";
+"weather_cloudy" = "Облачно";
+
+// Seguridad
+"seguridad_title" = "Безопасность";
+"seguridad_subtitle" = "Ресурсы и помощь в чрезвычайных ситуациях";
+"boton_panico_title" = "Кнопка паники";
+"numeros_emergencia_title" = "Аварийные номера";
+"emergencia_911" = "911";
+"emergencia_text" = "Чрезвычайная ситуация";
+"pais_mexico" = "Мексика";
+"denuncia_anonima" = "Анонимное сообщение";
+"auxilio_vial" = "Дорожная помощь";
+"cfe" = "CFE";
+"linea_apoyo_mujeres" = "Линия поддержки женщин";
+"pais_eeuu" = "США";
+"policia_no_urgente" = "Неотложная полиция";
+"alto_trata" = "Остановите торговлю людьми";
+"reporte_atf" = "Отчет ATF (оружие)";
+"pais_canada" = "Канада";
+"ayuda_comunitaria" = "Сообщественная помощь";
+"reporte_fraudes" = "Отчет о мошенничестве";
+"manuales_title" = "Руководства и инструкции";
+"manuales_mujeres" = "Руководства для женщин";
+"protocolos_via_publica" = "Протоколы на общественных местах";
+"guias_turisticas" = "Туристические гиды";
+"protocolo_desastres" = "Протокол при стихийных бедствиях";
+"novedades_title" = "Новости";
+"noticias_mexico" = "Новости Мексики";
+"noticias_eeuu" = "Новости США";
+"noticias_canada" = "Новости Канады";
+
+// TraduccionView
+"traduccion_titulo" = "Перевод в реальном времени";
+"traduccion_idioma_origen" = "Исходный язык";
+"traduccion_idioma_destino" = "Целевой язык";
+"traduccion_texto_reconocido" = "Распознанный текст";
+"traduccion_texto_traducido" = "Перевод";
+"traduccion_esperando" = "Ожидание голосового ввода...";
+"error" = "Ошибка";
+"aceptar" = "Принять";
+"permiso_microfono_denegado" = "Разрешение на микрофон отклонено. Включите его в настройках.";
+"permiso_voz_denegado" = "Разрешение на распознавание голоса отклонено. Включите его в настройках.";
+"error_configurar_audio" = "Ошибка при настройке аудио.";
+"error_inicio_reconocimiento" = "Ошибка при запуске распознавания речи.";
+"error_reconocedor_no_disponible" = "Распознавание речи недоступно.";
+"error_inicio_audio" = "Ошибка при запуске записи аудио.";
+"noticia_y_mas" = "Новости и другое";
+"pulsa_ver_mas" = "Нажмите, чтобы увидеть больше...";

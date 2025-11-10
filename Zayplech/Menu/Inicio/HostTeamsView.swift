@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - Vista de países anfitriones
 struct HostTeamsView: View {
     @Environment(\.dismiss) var dismiss
     @State private var selectedCountries: Set<String> = []
@@ -18,35 +19,26 @@ struct HostTeamsView: View {
     ]
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 16) {
             
-            // MARK: - Encabezado
+            // MARK: Encabezado
             VStack(alignment: .leading, spacing: 6) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("Anfitriones")
-                            .font(.largeTitle.bold())
-                            .foregroundColor(.naranjaMelocoton)
-                        
-                        Text("Selecciona los países anfitriones que quieras seguir.")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    Spacer()
-                    Button(action: { dismiss() }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 22))
-                            .foregroundColor(.gray)
-                    }
-                }
-                .padding(.horizontal)
-                .padding(.top, 10)
+                Text("Anfitriones")
+                    .font(.largeTitle.bold())
+                    .foregroundColor(.naranjaMelocoton)
+                
+                Text("Selecciona los países anfitriones que quieras seguir.")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
             }
+            .padding(.horizontal)
+            .padding(.top, 10)
             
+            // MARK: Scroll de países
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 14) {
                     ForEach(countries, id: \.name) { country in
-                        HostCountryRow(
+                        CountryRow(
                             flag: country.flag,
                             name: country.name,
                             color: .naranjaMelocoton,
@@ -57,14 +49,29 @@ struct HostTeamsView: View {
                     }
                 }
                 .padding()
-                .padding(.top, 8)
             }
+            
+            // MARK: Botón Guardar selección
+            Button(action: saveSelection) {
+                Text("Guardar selección")
+                    .font(.headline.bold())
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(selectedCountries.isEmpty ? Color.gray : Color.naranjaMelocoton)
+                    .cornerRadius(12)
+                    .shadow(radius: 2)
+            }
+            .padding(.horizontal)
+            .disabled(selectedCountries.isEmpty)
         }
-        .navigationBarHidden(true)
         .background(Color(.systemGroupedBackground))
+        .onAppear(perform: loadSelection)
+        .navigationTitle("Países Anfitriones")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
-    // MARK: - Lógica de selección múltiple
+    // MARK: Lógica selección múltiple
     private func toggleSelection(_ country: String) {
         withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
             if selectedCountries.contains(country) {
@@ -75,10 +82,23 @@ struct HostTeamsView: View {
         }
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
     }
+    
+    // MARK: Guardar selección
+    private func saveSelection() {
+        let array = Array(selectedCountries)
+        UserDefaults.standard.set(array, forKey: "HostCountriesSelected")
+        print("Países guardados:", array)
+    }
+    
+    // MARK: Cargar selección previa
+    private func loadSelection() {
+        guard let saved = UserDefaults.standard.array(forKey: "HostCountriesSelected") as? [String] else { return }
+        selectedCountries = Set(saved)
+    }
 }
 
-// MARK: - Subvista: Tarjeta de país moderna
-struct HostCountryRow: View {
+// MARK: - Fila de país reutilizable
+struct CountryRow: View {
     let flag: String
     let name: String
     let color: Color
@@ -117,13 +137,14 @@ struct HostCountryRow: View {
             .background(
                 RoundedRectangle(cornerRadius: 14)
                     .fill(Color.white)
-                    .shadow(color: .gray.opacity(0.08), radius: 4, x: 0, y: 2)
+                    .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
             )
         }
         .buttonStyle(.plain)
     }
 }
 
+// MARK: - Preview
 #Preview {
     NavigationStack {
         HostTeamsView()

@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct ZayplechApp: App {
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,7 +26,8 @@ struct ZayplechApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
+                .environmentObject(LocalizationManager.shared)
         }
         .modelContainer(sharedModelContainer)
     }

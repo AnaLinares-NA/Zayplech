@@ -5,14 +5,6 @@
 //  Created by Ana Linares Guzmán on 09/11/25.
 //
 
-
-//
-//  RefugiosSheetView.swift
-//  Zayplech
-//
-//  Created by Ana Linares Guzmán on 08/11/25.
-//
-
 import SwiftUI
 import MapKit
 

@@ -1,12 +1,19 @@
+//
+//  AboutYouView.swift
+//  Zayplech
+//
+//  Created by Ana Linares Guzmán on 07/11/25.
+//
+
+
 import SwiftUI
 
 struct AboutYouView: View {
-    // Para gestionar la imagen de perfil
+    
     @State private var profileImage: Image? = nil
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
 
-    // Para gestionar los datos del usuario
     @State private var userName: String = "Nombre de Usuario"
     @State private var email: String = "correo@ejemplo.com"
 
@@ -14,22 +21,25 @@ struct AboutYouView: View {
         ScrollView {
             VStack(spacing: 20) {
                 // MARK: - Cabecera con título
-                HStack {
-                    Image(systemName: "circle.fill") // Pequeño círculo naranja como en la imagen
-                        .font(.caption)
-                        .foregroundColor(.orange)
+                VStack(alignment: .center, spacing: 5) {
                     Text("Sobre ti")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    Spacer()
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.yellow)
+                    
+                    Text("Aquí puedes ver la información principal de tu cuenta, asi como gestionar la misma.")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
                 }
+                .multilineTextAlignment(.center)
                 .padding(.horizontal)
                 .padding(.top, 10)
 
                 // MARK: - Sección de Imagen y Nombre de Usuario
                 VStack {
                     Button(action: {
-                        showingImagePicker = true // Mostrar el selector de imagen
+                        showingImagePicker = true
+                        
                     }) {
                         if let profileImage = profileImage {
                             profileImage
@@ -39,7 +49,7 @@ struct AboutYouView: View {
                                 .clipShape(Circle())
                                 .overlay(Circle().stroke(Color.gray.opacity(0.3), lineWidth: 1))
                         } else {
-                            // Icono de cámara por defecto
+                           
                             Image(systemName: "camera.circle.fill")
                                 .resizable()
                                 .scaledToFit()
@@ -65,27 +75,32 @@ struct AboutYouView: View {
                 // MARK: - Opciones de Edición
                 VStack(spacing: 15) {
                     EditableProfileRow(title: "Correo electrónico", value: $email, icon: "arrow.forward.circle.fill") {
-                        // Acción para guardar el correo o navegar a una pantalla de edición
+                        
                         print("Guardar correo: \(email)")
                     }
                     
+                    ProfileActionRow(title: "Agrgar número telefónico", icon: "arrow.forward.circle.fill") {
+                        
+                        print("Ir a cambiar contraseña")
+                    }
+                    
                     ProfileActionRow(title: "Cambiar contraseña", icon: "arrow.forward.circle.fill") {
-                        // Acción para navegar a la pantalla de cambiar contraseña
+                        
                         print("Ir a cambiar contraseña")
                     }
                     
                     ProfileActionRow(title: "Eliminar cuenta", icon: "arrow.forward.circle.fill") {
-                        // Acción para mostrar una alerta de confirmación o navegar a la pantalla de eliminación
+                        
                         print("Mostrar confirmación para eliminar cuenta")
                     }
                 }
                 .padding(.horizontal)
             }
-            .padding(.bottom, 20) // Espacio al final del scroll
+            .padding(.bottom, 20)
         }
-        .navigationTitle("Perfil") // El título de la barra superior
+        .navigationTitle("Perfil")
         .navigationBarTitleDisplayMode(.inline)
-        .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all)) // Fondo de la vista
+        .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
         .sheet(isPresented: $showingImagePicker) {
             ImagePicker(image: $inputImage)
         }
@@ -102,7 +117,6 @@ struct AboutYouView: View {
 
 // MARK: - Componentes Auxiliares para AboutYouView
 
-// Fila editable para datos de perfil
 struct EditableProfileRow: View {
     let title: String
     @Binding var value: String
@@ -117,10 +131,10 @@ struct EditableProfileRow: View {
             TextField("", text: $value)
                 .multilineTextAlignment(.trailing)
                 .foregroundColor(.gray)
-                .disabled(false) // Permite la edición
+                .disabled(false)
             Button(action: action) {
                 Image(systemName: icon)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(.yellow)
             }
         }
         .padding()
@@ -130,7 +144,6 @@ struct EditableProfileRow: View {
     }
 }
 
-// Fila de acción para perfil (botones)
 struct ProfileActionRow: View {
     let title: String
     let icon: String
@@ -143,7 +156,7 @@ struct ProfileActionRow: View {
                     .foregroundColor(.primary)
                 Spacer()
                 Image(systemName: icon)
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(.yellow)
             }
             .padding()
             .background(Color.white)
@@ -153,7 +166,6 @@ struct ProfileActionRow: View {
     }
 }
 
-// UIViewControllerRepresentable para el ImagePicker (requerido para acceder a la cámara/galería)
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     @Environment(\.presentationMode) var presentationMode
@@ -161,7 +173,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let picker = UIImagePickerController()
         picker.delegate = context.coordinator
-        picker.sourceType = .photoLibrary // Puedes cambiar a .camera o agregar un UIAlertController para elegir
+        picker.sourceType = .photoLibrary
         return picker
     }
 
@@ -190,10 +202,8 @@ struct ImagePicker: UIViewControllerRepresentable {
 
 struct AboutYouView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView { // Envuelve en NavigationView para ver el navigationTitle
+        NavigationView { 
             AboutYouView()
         }
     }
 }
-message.txt
-8 KB

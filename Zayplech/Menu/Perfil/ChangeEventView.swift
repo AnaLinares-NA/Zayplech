@@ -1,21 +1,30 @@
+//
+//  ChangeEventView.swift
+//  Zayplech
+//
+//  Created by Ana Linares Guzmán on 07/11/25.
+//
+
 import SwiftUI
 
 struct ChangeEventView: View {
-    // Puedes usar un @State para el evento actual seleccionado
+    
     @State private var selectedEvent: String = "Mundial"
 
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                // MARK: - Cabecera con título
-                HStack {
-                    Image(systemName: "circle.fill") // Pequeño círculo naranja
-                        .font(.caption)
-                        .foregroundColor(.orange)
-                    Text("Cambiar de evento")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    Spacer()
+                // MARK: - Cabecera
+                VStack(alignment: .center, spacing: 5) {
+                    Text("Cambiar evento")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.yellow)
+                    
+                    Text("Aquí puedes ver tu evento actual así como cambiar a otro evento el cual hayas registrado.")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
                 }
                 .padding(.horizontal)
                 .padding(.top, 10)
@@ -25,23 +34,20 @@ struct ChangeEventView: View {
                     Text("Evento actual: \(selectedEvent)")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .padding(.horizontal) // Alinea con el borde de la tarjeta
+                        .padding(.horizontal)
 
-                    // Tarjeta para el evento actual (Mundial)
-                    Image("worldcup_event_card") // Asegúrate de tener esta imagen en tus Assets
+                    Image("cm")
                         .resizable()
                         .scaledToFill()
                         .frame(maxWidth: .infinity)
-                        .frame(height: 100) // Altura fija para la tarjeta
+                        .frame(height: 100)
                         .cornerRadius(10)
-                        .clipped() // Para cortar la imagen si se sale de la esquina
-                        .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 5)
-                        .padding(.horizontal, 10) // Padding dentro de la tarjeta contenedora
+                        .clipped()
+                        .padding(.horizontal, 10)
                 }
                 .padding(.vertical, 10)
                 .background(Color.white)
                 .cornerRadius(15)
-                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 5)
                 .padding(.horizontal)
 
                 // MARK: - Registrar un evento nuevo
@@ -52,22 +58,23 @@ struct ChangeEventView: View {
                         .padding(.horizontal)
 
                     Button(action: {
-                        // Acción para registrar un nuevo evento
+                        
                         print("Abrir pantalla para registrar nuevo evento")
                     }) {
                         HStack {
-                            Text("Añadir nuevo evento") // Puedes cambiar el texto
+                            Text("Añadir nuevo evento")
                                 .foregroundColor(.primary)
                             Spacer()
-                            Image(systemName: "plus.circle.fill") // Icono para añadir
-                                .foregroundColor(.accentColor)
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(.yellow)
                         }
                         .padding()
                         .background(Color.white)
                         .cornerRadius(10)
                         .shadow(color: Color.black.opacity(0.05), radius: 3, x: 0, y: 3)
                     }
-                    .padding(.horizontal, 10) // Padding dentro de la tarjeta contenedora
+                    .padding(.horizontal, 10)
+                    
                 }
                 .padding(.vertical, 10)
                 .background(Color.white)
@@ -75,18 +82,19 @@ struct ChangeEventView: View {
                 .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 5)
                 .padding(.horizontal)
 
-
                 // MARK: - Opciones de Eventos Registrados
-                VStack(alignment: .leading, spacing: 10) {
-                    // Botón para Concierto
-                    EventOptionCard(eventName: "Concierto", backgroundImageName: "concert_event_card") {
-                        selectedEvent = "Concierto"
-                    }
+                VStack(alignment: .leading, spacing: 25) {
+                    
+                    EventOptionCard(eventName: "Concierto", backgroundImageName: "concierto") { selectedEvent = "Concierto" }
+                    
+                    EventOptionCard(eventName: "Desfile", backgroundImageName: "desfile") { selectedEvent = "Desfile" }
 
-                    // Botón para Feria
-                    EventOptionCard(eventName: "Feria", backgroundImageName: "fair_event_card") {
-                        selectedEvent = "Feria"
-                    }
+                    EventOptionCard(eventName: "Feria", backgroundImageName: "feria") { selectedEvent = "Feria" }
+                    
+                    EventOptionCard(eventName: "Congreso", backgroundImageName: "congreso") { selectedEvent = "Congreso" }
+                    
+                    EventOptionCard(eventName: "Meet & Greet", backgroundImageName: "mg") { selectedEvent = "Meet & Greet" }
+                    
                 }
                 .padding(.horizontal)
             }
@@ -100,10 +108,9 @@ struct ChangeEventView: View {
 
 // MARK: - Componentes Auxiliares para ChangeEventView
 
-// Tarjeta de opción de evento
 struct EventOptionCard: View {
     let eventName: String
-    let backgroundImageName: String // Nombre de la imagen de fondo en tus Assets
+    let backgroundImageName: String
     let action: () -> Void
 
     var body: some View {
@@ -127,10 +134,6 @@ struct EventOptionCard: View {
     }
 }
 
-struct ChangeEventView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ChangeEventView()
-        }
-    }
+#Preview {
+    ChangeEventView()
 }

@@ -5,18 +5,10 @@
 //  Created by Ana Linares Guzmán on 09/11/25.
 //
 
-
-//
-//  RefugiosData.swift
-//  Zayplech
-//
-//  Created by Ana Linares Guzmán on 08/11/25.
-//
-
 import Foundation
 import MapKit
 
-struct RefugiosData {
+struct RefugiosDataView {
     static let refugios: [Refugio] = [
         Refugio(
             name: "Refugio CDMX Centro",

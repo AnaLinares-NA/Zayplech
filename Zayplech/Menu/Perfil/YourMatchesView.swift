@@ -1,124 +1,160 @@
+//
+//  YourMatchesView.swift
+//  Zayplech
+//
+//  Created by Ana Linares Guzmán on 07/11/25.
+//
+
 import SwiftUI
 
 struct YourMatchesView: View {
-    @State private var newTicketInfo: String = "" // Para el campo de nuevo boleto
-    @State private var showingTicketRegistration = false // Para mostrar la vista de registro de boleto
-
+    @State private var showingTicketRegistration = false
+    @State private var tickets: [Ticket] = [
+        Ticket(localTeam: "Team A", visitorTeam: "Team B", date: Date(), stadium: "Estadio Central", seat: "Sector 3, Fila 5, Asiento 12")
+    ]
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                // MARK: - Cabecera con título
-                HStack {
-                    Image(systemName: "circle.fill") // Pequeño círculo naranja
-                        .font(.caption)
-                        .foregroundColor(.orange)
+                
+                // MARK: - Cabecera
+                VStack(alignment: .leading, spacing: 5) {
                     Text("Sobre tus partidos")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                    Spacer()
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.yellow)
+                    
+                    Text("Aquí puedes ver tus boletos y registrar nuevos partidos.")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
                 }
                 .padding(.horizontal)
                 .padding(.top, 10)
-
-                // MARK: - Registrar Nuevo Boleto
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Registrar un boleto nuevo")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-
-                    Button(action: {
-                        showingTicketRegistration = true // Activa la sheet para registrar boleto
-                    }) {
-                        HStack {
-                            Text("Consultar boleto \"??? vs ???\"") // Placeholder para el botón de consulta
-                                .foregroundColor(.primary)
-                            Spacer()
-                            Image(systemName: "square.and.pencil") // Icono de edición
-                                .foregroundColor(.accentColor)
-                        }
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.05), radius: 3, x: 0, y: 3)
-                    }
-
-                    // Lista de información de un boleto (simulada)
-                    VStack(alignment: .leading, spacing: 5) {
-                        TicketDetailRow(text: "Fecha y hora")
-                        TicketDetailRow(text: "Ubicación del estadio")
-                        TicketDetailRow(text: "Ubicación en el estadio (sector, fila y asiento)")
-                        TicketDetailRow(text: "Equipo local")
-                        TicketDetailRow(text: "Equipo visitante")
+                
+                // MARK: - Botón Registrar Nuevo Boleto
+                Button(action: { showingTicketRegistration = true }) {
+                    HStack {
+                        Image(systemName: "square.and.pencil")
+                            .font(.title2)
+                            .foregroundColor(.yellow)
+                            .padding(.trailing, 5)
+                        
+                        Text("Registrar un nuevo boleto")
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+                        
+                        Spacer()
+                        
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
                     }
                     .padding()
-                    .frame(maxWidth: .infinity)
                     .background(Color.white)
-                    .cornerRadius(10)
-                    .shadow(color: Color.black.opacity(0.05), radius: 3, x: 0, y: 3)
+                    .cornerRadius(12)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.yellow.opacity(0.5), lineWidth: 1)
+                    )
                 }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(15)
-                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 5)
                 .padding(.horizontal)
+                
+                // MARK: - Lista de boletos
+                VStack(spacing: 15) {
+                    ForEach(tickets, id: \.id) { ticket in
+                        TicketCardView(ticket: ticket)
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.bottom, 30)
             }
-            .padding(.bottom, 20)
         }
-        .navigationTitle("Perfil")
-        .navigationBarTitleDisplayMode(.inline)
         .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
+        .navigationTitle("Tus Partidos")
+        .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showingTicketRegistration) {
-            // Aquí puedes presentar una vista para registrar un nuevo boleto
-            // Por ahora, será una vista simple de ejemplo
             RegisterNewTicketView()
         }
     }
 }
 
-// MARK: - Componentes Auxiliares para YourMatchesView
+// MARK: - Modelo de Ticket
+struct Ticket: Identifiable {
+    let id = UUID()
+    let localTeam: String
+    let visitorTeam: String
+    let date: Date
+    let stadium: String
+    let seat: String
+}
 
-// Fila para detalle de boleto
+// MARK: - Tarjeta de Boleto
+struct TicketCardView: View {
+    let ticket: Ticket
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text("\(ticket.localTeam) vs \(ticket.visitorTeam)")
+                    .font(.headline)
+                    .foregroundColor(.yellow)
+                Spacer()
+                Image(systemName: "ticket.fill")
+                    .foregroundColor(.yellow)
+            }
+
+            Divider()
+
+            VStack(alignment: .leading, spacing: 4) {
+                TicketDetailRow(text: "Fecha: \(ticket.date.formatted(.dateTime.month().day().hour().minute()))")
+                TicketDetailRow(text: "Estadio: \(ticket.stadium)")
+                TicketDetailRow(text: "Asiento: \(ticket.seat)")
+            }
+            .font(.subheadline)
+            .foregroundColor(.primary)
+        }
+        .padding()
+        .background(Color.white)
+        .cornerRadius(12)
+        .shadow(color: Color.black.opacity(0.03), radius: 3, x: 0, y: 2)
+    }
+}
+
+
+// MARK: - Fila de detalle
 struct TicketDetailRow: View {
     let text: String
-
     var body: some View {
-        HStack {
+        HStack(spacing: 6) {
             Image(systemName: "circle.fill")
-                .font(.system(size: 8))
+                .font(.system(size: 6))
                 .foregroundColor(.gray)
             Text(text)
-                .font(.subheadline)
-                .foregroundColor(.primary)
         }
     }
 }
 
-// Vista de ejemplo para registrar un nuevo boleto
+// MARK: - Vista Registrar Nuevo Boleto
 struct RegisterNewTicketView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var matchName: String = ""
     @State private var date: Date = Date()
-
+    
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Detalles del Boleto")) {
                     TextField("Nombre del Partido", text: $matchName)
                     DatePicker("Fecha y Hora", selection: $date, displayedComponents: [.date, .hourAndMinute])
-                    // Puedes añadir más campos aquí: estadio, asientos, equipos, etc.
                 }
             }
             .navigationTitle("Registrar Boleto")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancelar") {
-                        presentationMode.wrappedValue.dismiss()
-                    }
+                    Button("Cancelar") { presentationMode.wrappedValue.dismiss() }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Guardar") {
-                        // Lógica para guardar el boleto
                         print("Boleto guardado: \(matchName) el \(date)")
                         presentationMode.wrappedValue.dismiss()
                     }
